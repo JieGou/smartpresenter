@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <RibbonTab x:Key="SlideShowTab" DataContext="{Binding SlideShowTabViewModel}"
+               Header="Slide Show"
+               KeyTip="S">
+        <!--  Strt Slide Show Group  -->
+        <RibbonGroup x:Name="StartSlideShowGroup" Header="Start Slide Show">
+            <StackPanel Orientation="Horizontal">
+                <RibbonButton Label="From First" Command="{Binding SlideShowFromFirstSlideCommand}"/>
+                <RibbonButton Label="From Current" Command="{Binding SlideShowFromCurrentSlideCommand}"/>
+                <RibbonSeparator/>
+                <RibbonMenuButton Label="Custom Show">
+                    <RibbonMenuItem Header="Custom Shows..."/>
+                </RibbonMenuButton>
+            </StackPanel>
+        </RibbonGroup>
+
+        <!--Setup-->
+        <RibbonGroup x:Name="SetupSlideShowGroup" Header="Setup">
+            <StackPanel Orientation="Horizontal">
+                <RibbonButton Label="Setup Slide Show"/>
+            </StackPanel>
+        </RibbonGroup>
+    </RibbonTab>
+</ResourceDictionary>

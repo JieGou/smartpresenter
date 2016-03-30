@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Main.MainPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:SmartPresenter.UI.Main"
+             xmlns:Controls="clr-namespace:SmartPresenter.UI.Controls;assembly=SmartPresenter.UI.Controls"
+             xmlns:Common="clr-namespace:SmartPresenter.UI.Common;assembly=SmartPresenter.UI.Common"
+             xmlns:AvalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:prism="http://www.codeplex.com/prism"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartPresenter.UI.Main;component/MainPanelResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <AvalonDock:DockingManager Grid.Row="1" Margin="0 0 5 0" >
+        <AvalonDock:LayoutRoot>
+            <AvalonDock:LayoutRoot.LeftSide>
+                <AvalonDock:LayoutAnchorSide>
+                    <AvalonDock:LayoutAnchorGroup>
+                        <AvalonDock:LayoutAnchorable Title="Documents" ContentId="documents" AutoHideMinWidth="300">
+                            <!--<Controls:DocumentContainer/>-->
+                            <ContentControl prism:RegionManager.RegionName="{x:Static Common:RegionNames.DocumentContainerRegion}"/>
+                        </AvalonDock:LayoutAnchorable>
+                        <AvalonDock:LayoutAnchorable Title="Media Items" ContentId="mediaItems" AutoHideMinWidth="300">
+                            <ContentControl prism:RegionManager.RegionName="{x:Static Common:RegionNames.SideMediaContainerRegion}"/>
+                        </AvalonDock:LayoutAnchorable>
+                    </AvalonDock:LayoutAnchorGroup>
+                </AvalonDock:LayoutAnchorSide>
+            </AvalonDock:LayoutRoot.LeftSide>
+            <AvalonDock:LayoutRoot.BottomSide>
+                <AvalonDock:LayoutAnchorSide>
+                    <AvalonDock:LayoutAnchorGroup>
+                        <AvalonDock:LayoutAnchorable Title="Media Gallery" ContentId="mediaGallery" AutoHideMinHeight="275">
+                            <!--<Controls:MediaViewer Margin="2 8 2 2" />-->
+                            <ContentControl prism:RegionManager.RegionName="{x:Static Common:RegionNames.MediaViewerRegion}" Margin="2 8 2 2"/>
+                        </AvalonDock:LayoutAnchorable>
+                        <AvalonDock:LayoutAnchorable Title="Audio Gallery" ContentId="audioGallery" AutoHideMinHeight="275"/>
+                    </AvalonDock:LayoutAnchorGroup>
+                </AvalonDock:LayoutAnchorSide>
+            </AvalonDock:LayoutRoot.BottomSide>
+            <AvalonDock:LayoutPanel>
+                <AvalonDock:LayoutAnchorablePane>
+                    <AvalonDock:LayoutAnchorable Title="Slide Viewer" CanHide="False" CanClose="False" CanAutoHide="False">
+                        <!--<Controls:SlideViewer />-->
+                        <ContentControl prism:RegionManager.RegionName="{x:Static Common:RegionNames.ContentRegion}" Margin="2 8 2 2"/>
+                    </AvalonDock:LayoutAnchorable>
+                </AvalonDock:LayoutAnchorablePane>
+            </AvalonDock:LayoutPanel>
+        </AvalonDock:LayoutRoot>
+    </AvalonDock:DockingManager>
+</UserControl>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a836d2ae-6280-4271-9003-601fe775c2a6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:45610/CloudSyncService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CloudSyncService.xsd" MetadataType="Schema" ID="2de0d491-b867-48d6-bfe0-afd572ea8b5d" SourceId="1" SourceUrl="http://localhost:45610/CloudSyncService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CloudSyncService.disco" MetadataType="Disco" ID="9ec4ae68-bccd-4c3d-aa57-aa2aa470e89a" SourceId="1" SourceUrl="http://localhost:45610/CloudSyncService.svc?disco" />
+    <MetadataFile FileName="CloudSyncService.wsdl" MetadataType="Wsdl" ID="faac8ec5-0568-494b-a82c-324dd5f683bf" SourceId="1" SourceUrl="http://localhost:45610/CloudSyncService.svc?wsdl" />
+    <MetadataFile FileName="CloudSyncService1.xsd" MetadataType="Schema" ID="743575ee-cfeb-43b7-8151-9bd1efe62be1" SourceId="1" SourceUrl="http://localhost:45610/CloudSyncService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CloudSyncService2.xsd" MetadataType="Schema" ID="090920ea-b86d-4cd3-90f3-883badd90a7f" SourceId="1" SourceUrl="http://localhost:45610/CloudSyncService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

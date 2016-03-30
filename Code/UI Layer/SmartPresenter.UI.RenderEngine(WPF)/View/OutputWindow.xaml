@@ -1,0 +1,90 @@
+﻿<Window x:Class="SmartPresenter.UI.RenderEngine.WPF.OutputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        xmlns:RenderEngine="clr-namespace:SmartPresenter.UI.RenderEngine.WPF"  
+        xmlns:ControlsViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel;assembly=SmartPresenter.UI.Controls"  
+        xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"  
+        xmlns:prism="http://www.codeplex.com/prism"
+        Title="OutputWindow" Height="300" Width="300" WindowState="Maximized" 
+        PreviewKeyDown="Window_PreviewKeyDown" WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartPresenter.UI.Controls;component/Slide/SlideEditorResources.xaml" />
+                <ResourceDictionary Source="OutputWindowResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Canvas DataContext="{Binding PreviousSlide}">
+            <ListBox x:Name="previousSlidePreview" Grid.Row="0" Width="{Binding Width}" Height="{Binding Height}" BorderThickness="0" Padding="-1"
+             ItemsSource="{Binding Elements}" Focusable="False" IsHitTestVisible="False" SnapsToDevicePixels="True"
+             ItemsPanel="{StaticResource SlideChildrenPanelTemplate}" UseLayoutRounding="True" 
+             ItemContainerStyle="{StaticResource SlideChildStyleBase}" RenderTransformOrigin="0.5 0.5"
+             ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type ControlsViewModel:VideoView}">
+                        <RenderEngine:VideoView Context="{Binding}" Width="{Binding Width}" Height="{Binding Height}"/>
+                        <!--<MediaElement Source="{Binding Path}" Width="{Binding Width}" Height="{Binding Height}" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}"
+                      LoadedBehavior="Play" UseLayoutRounding="True" SnapsToDevicePixels="True"/>-->
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type ControlsViewModel:TextView}">
+                        <Grid>
+                            <FlowDocumentScrollViewer Width="{Binding Width}" Height="{Binding Height}" RenderTransform="{Binding Transform}" 
+                                    RenderTransformOrigin="0.5 0.5" Document="{Binding OutputContent}" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden" Opacity="{Binding Opacity}" IsHitTestVisible="False"
+                                    VerticalContentAlignment="{Binding VerticalAlignment}">
+                            </FlowDocumentScrollViewer>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.Resources>
+                <ListBox.RenderTransform>
+                    <ScaleTransform x:Name="currentSlideScaleTransform" ScaleX="1" ScaleY="1"/>
+                </ListBox.RenderTransform>
+                <ListBox.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="1" Color="Black"/>
+                        <GradientStop x:Name="currentSlideGradientWipe" Offset="1.0" Color="Transparent"/>
+                    </LinearGradientBrush>
+                </ListBox.OpacityMask>
+            </ListBox>
+        </Canvas>
+        <Canvas  DataContext="{Binding CurrentSlide}">
+            <ListBox x:Name="currentSlidePreview" Grid.Row="0" Width="{Binding Width}" Height="{Binding Height}" BorderThickness="0" Padding="-1"
+             ItemsSource="{Binding Elements}" Focusable="False" IsHitTestVisible="False" SnapsToDevicePixels="True"
+             ItemsPanel="{StaticResource SlideChildrenPanelTemplate}" UseLayoutRounding="True" 
+             ItemContainerStyle="{StaticResource SlideChildStyleBase}" RenderTransformOrigin="0.5 0.5"
+             ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type ControlsViewModel:VideoView}">
+                        <RenderEngine:VideoView Context="{Binding}" Width="{Binding Width}" Height="{Binding Height}"/>
+                        <!--<MediaElement Source="{Binding Path}" Width="{Binding Width}" Height="{Binding Height}" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}"
+                      LoadedBehavior="Play" UseLayoutRounding="True" SnapsToDevicePixels="True"/>-->
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type ControlsViewModel:TextView}">
+                        <Grid>
+                            <FlowDocumentScrollViewer Width="{Binding Width}" Height="{Binding Height}" RenderTransform="{Binding Transform}" 
+                                    RenderTransformOrigin="0.5 0.5" Document="{Binding OutputContent}" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden" Opacity="{Binding Opacity}" IsHitTestVisible="False"
+                                    VerticalContentAlignment="{Binding VerticalAlignment}">
+                            </FlowDocumentScrollViewer>
+                        </Grid>
+                    </DataTemplate>
+
+                </ListBox.Resources>
+                <ListBox.RenderTransform>
+                    <ScaleTransform x:Name="previousSlideScaleTransform" ScaleX="1" ScaleY="1"/>
+                </ListBox.RenderTransform>
+                <ListBox.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="1" Color="Black"/>
+                        <GradientStop x:Name="previousSlideGradientWipe" Offset="1.0" Color="Transparent"/>
+                    </LinearGradientBrush>
+                </ListBox.OpacityMask>
+            </ListBox>
+        </Canvas>
+    </Grid>    
+</Window>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="52999c7a-9c0a-43bd-8ba2-705261ca9b53" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:45610/Services/CloudDBService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CloudDBService.xsd" MetadataType="Schema" ID="b620e60f-3453-42da-acc4-1d9afd2d76d4" SourceId="1" SourceUrl="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CloudDBService1.xsd" MetadataType="Schema" ID="6fd4ef85-0e8e-445d-8c4f-e9fb05db3dee" SourceId="1" SourceUrl="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CloudDBService.wsdl" MetadataType="Wsdl" ID="18ee3fce-42c0-47da-9187-bb45ba6b696a" SourceId="1" SourceUrl="http://localhost:45610/Services/CloudDBService.svc?wsdl" />
+    <MetadataFile FileName="CloudDBService.disco" MetadataType="Disco" ID="71dbcaf0-d606-4a7a-ad69-15953e0270a5" SourceId="1" SourceUrl="http://localhost:45610/Services/CloudDBService.svc?disco" />
+    <MetadataFile FileName="CloudDBService2.xsd" MetadataType="Schema" ID="28fb8c7b-6729-4bc1-98d1-9a25002075dd" SourceId="1" SourceUrl="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

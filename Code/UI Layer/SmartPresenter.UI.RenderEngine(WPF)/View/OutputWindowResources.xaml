@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ControlsViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel;assembly=SmartPresenter.UI.Controls">
+
+    <!--<DataTemplate DataType="{x:Type ControlsViewModel:VideoView}">
+        <MediaElement Source="{Binding Path}" Width="{Binding Width}" Height="{Binding Height}" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}"
+                      LoadedBehavior="Play" UseLayoutRounding="True" SnapsToDevicePixels="True"/>
+    </DataTemplate>-->
+
+    <Storyboard x:Key="NoneTransition">
+    </Storyboard>
+
+    <Storyboard x:Key="FadeTransition">
+        <DoubleAnimation Storyboard.TargetName="currentSlidePreview" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+        <DoubleAnimation Storyboard.TargetName="previousSlidePreview" Storyboard.TargetProperty="Opacity" From="1" To="0" />        
+    </Storyboard>
+
+    <Storyboard x:Key="PushTransition">
+        <ThicknessAnimation Storyboard.TargetName="previousSlidePreview" Storyboard.TargetProperty="Margin"/>
+        <ThicknessAnimation Storyboard.TargetName="currentSlidePreview" Storyboard.TargetProperty="Margin"/>        
+    </Storyboard>
+
+    <Storyboard x:Key="WipeTransition">
+        <!--<DoubleAnimation Storyboard.TargetName="previousSlideGradientWipe" Storyboard.TargetProperty="Offset" From="1.0" To="0.0"/>-->
+        <DoubleAnimation Storyboard.TargetName="currentSlideGradientWipe" Storyboard.TargetProperty="Offset" From="1.0" To="0.0"/>
+    </Storyboard>
+</ResourceDictionary>

@@ -1,0 +1,137 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:prism="http://www.codeplex.com/prism"
+                    xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"  
+                    xmlns:ViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel"
+                    xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+                    xmlns:UICommon="clr-namespace:SmartPresenter.UI.Common;assembly=SmartPresenter.UI.Common"                    
+                    xmlns:Local="clr-namespace:SmartPresenter.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SmartPresenter.UI.Controls;component/Styles/CommonStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="ListBox">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent"/>
+        </Style.Resources>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="SlideChildrenPanelTemplate">
+        <Canvas x:Name="canvas"
+                Background="{Binding DataContext.Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                Width="{Binding DataContext.Width, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}" 
+                Height="{Binding DataContext.Height, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}">
+            <Interactivity:Interaction.Triggers>
+                <Interactivity:EventTrigger EventName="MouseDown">
+                    <prism:InvokeCommandAction Command="{Binding DataContext.RemoveSelectionCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}" />
+                </Interactivity:EventTrigger>
+            </Interactivity:Interaction.Triggers>
+        </Canvas>
+    </ItemsPanelTemplate>
+
+    <ContextMenu x:Key="EditorObjectContextMenu">
+        <MenuItem Header="Cut" Command="ApplicationCommands.Cut"/>
+        <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+        <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
+        <MenuItem Header="Delete" Command="ApplicationCommands.Delete"/>
+        <MenuItem Header="Delete All" Command="{x:Static UICommon:EditorCommands.DeleteAllCommand}"/>
+        <Separator/>
+        <MenuItem Header="Order">
+            <MenuItem Header="Bring Forward" Command="{x:Static UICommon:EditorCommands.BringForwardCommand}"/>
+            <MenuItem Header="Bring To Front" Command="{x:Static UICommon:EditorCommands.BringToFrontCommand}"/>
+            <MenuItem Header="Send Backward" Command="{x:Static UICommon:EditorCommands.SendBackwardCommand}"/>
+            <MenuItem Header="Send To Back" Command="{x:Static UICommon:EditorCommands.SendToBackCommand}"/>
+        </MenuItem>
+        <Separator/>
+        <MenuItem Header="Select All" Command="ApplicationCommands.SelectAll"/>
+        <MenuItem Header="Unselect All" Command="{x:Static UICommon:EditorCommands.UnSelectAllCommand}"/>
+    </ContextMenu>
+
+    <Style x:Key="SlideChildStyleBase">
+        <Setter Property="Canvas.Left" Value="{Binding Path=X, Mode=TwoWay}" />
+        <Setter Property="Canvas.Top" Value="{Binding Path=Y, Mode=TwoWay}" />
+        <Setter Property="ListBoxItem.Width" Value="{Binding Path=Width, Mode=OneWayToSource}" />
+        <Setter Property="ListBoxItem.Height" Value="{Binding Path=Height, Mode=OneWayToSource}" />
+        <Setter Property="ListBoxItem.IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}" />
+        <Setter Property="ListBoxItem.Padding" Value="0" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="ListBoxItem.ContextMenu" Value="{StaticResource EditorObjectContextMenu}"/>
+    </Style>
+
+    <DataTemplate DataType="{x:Type ViewModel:RectangleView}">
+        <Border Width="{Binding Width}" Height="{Binding Height}" Background="{Binding Background}" CornerRadius="{Binding CornerRadius}" 
+                BorderBrush="{Binding Stroke}" BorderThickness="{Binding StrokeThickness}" RenderTransform="{Binding Transform}" 
+                RenderTransformOrigin="0.5 0.5" Opacity="{Binding Opacity}">
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:SquareView}">
+        <Border Width="{Binding Width}" Height="{Binding Height}" Background="{Binding Background}" CornerRadius="{Binding CornerRadius}" 
+                BorderBrush="{Binding Stroke}" BorderThickness="{Binding StrokeThickness}" RenderTransform="{Binding Transform}" 
+                RenderTransformOrigin="0.5 0.5" Opacity="{Binding Opacity}">
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:CircleView}">
+        <Ellipse Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Background}" Stroke="{Binding Stroke}" 
+                 StrokeThickness="{Binding StrokeThickness}" RenderTransform="{Binding Transform}" 
+                 RenderTransformOrigin="0.5 0.5" Opacity="{Binding Opacity}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:EllipseView}">
+        <Ellipse Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Background}" Stroke="{Binding Stroke}" 
+                 StrokeThickness="{Binding StrokeThickness}" RenderTransform="{Binding Transform}" 
+                 RenderTransformOrigin="0.5 0.5" Opacity="{Binding Opacity}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:TextView}">
+        <Grid>
+            <FlowDocumentScrollViewer x:Name="textView" Width="{Binding Width}" Height="{Binding Height}" RenderTransform="{Binding Transform}"
+                                    RenderTransformOrigin="0.5 0.5" Document="{Binding Content}" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden" Opacity="{Binding Opacity}" IsHitTestVisible="False"
+                                    VerticalContentAlignment="{Binding VerticalAlignment}">
+            </FlowDocumentScrollViewer>
+            <Canvas Background="Transparent">
+                <Interactivity:Interaction.Triggers>
+                    <Interactivity:EventTrigger EventName="MouseDown">
+                        <prism:InvokeCommandAction Command="{Binding InitiateEditModeCommand}" />
+                    </Interactivity:EventTrigger>
+                </Interactivity:Interaction.Triggers>
+            </Canvas>
+            <Toolkit:RichTextBox x:Name="editView" Text="{Binding RTFContent}" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" 
+                                 Width="{Binding Width}" Height="{Binding Height}" Visibility="Collapsed">
+                <Toolkit:RichTextBoxFormatBarManager.FormatBar>
+                    <Toolkit:RichTextBoxFormatBar/>
+                </Toolkit:RichTextBoxFormatBarManager.FormatBar>
+                <Interactivity:Interaction.Triggers>
+                    <Interactivity:EventTrigger EventName="LostFocus">
+                        <prism:InvokeCommandAction Command="{Binding InitiateViewModeCommand}" />
+                    </Interactivity:EventTrigger>
+                </Interactivity:Interaction.Triggers>
+            </Toolkit:RichTextBox>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsInEditingMode}" Value="True">
+                <Setter TargetName="textView" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="editView" Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:ImageView}">
+        <Image Source="{Binding Path}" Width="{Binding Width}" Height="{Binding Height}" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:VideoView}">
+        <Image Source="{Binding ThumbnailPath}" Width="{Binding Width}" Height="{Binding Height}" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:AudioView}">
+        <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Background}" Opacity="{Binding Opacity}"/>
+    </DataTemplate>
+
+</ResourceDictionary>

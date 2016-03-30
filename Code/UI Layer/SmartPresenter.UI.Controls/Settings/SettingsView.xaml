@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Controls.Settings.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:ColorBox="http://schemas.ncore.com/wpf/xaml/colorbox"
+             xmlns:ViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel"
+             xmlns:WindowsControls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+             xmlns:SettingsControls="clr-namespace:SmartPresenter.UI.Controls.Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <UserControl.Resources>
+        <WindowsControls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid MinWidth="700" MinHeight="500" MaxWidth="700" MaxHeight="500">
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="General">
+                <SettingsControls:GeneralSettingsView/>
+            </TabItem>
+            <TabItem Header="Display">
+                <SettingsControls:DisplaySettingsView/>
+            </TabItem>
+            <TabItem Header="Sync">
+                <SettingsControls:SyncSettingsView/>
+            </TabItem>
+            <TabItem Header="Network">
+                <SettingsControls:NetworkSettingsView/>
+            </TabItem>
+            <TabItem Header="Social">
+                <SettingsControls:SocialSettingsView/>
+            </TabItem>
+            <TabItem Header="Advanced">
+                <SettingsControls:AdvancedSettingsView/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="10.0" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">$(FxCopDir)\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded, Good, Noise" NewOnly="False" />
+   <Report Status="Active, Good, Noise" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.BO.Common.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.Common.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.Data.Common.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.UI.Common.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.UI.Main.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.UI.UserControls.dll" Analyze="True" AnalyzeAllChildren="False">
+   <Modules AnalyzeAllChildren="False">
+    <Module Name="smartpresenter.ui.usercontrols.dll" Analyze="True" AnalyzeAllChildren="False">
+     <Namespaces AnalyzeAllChildren="False">
+      <Namespace Name="" Analyze="True" AnalyzeAllChildren="True" />
+      <Namespace Name="SmartPresenter.UI.UserControls" Analyze="True" AnalyzeAllChildren="False">
+       <Types AnalyzeAllChildren="False">
+        <Type Name="DocumentContainer" Analyze="True" AnalyzeAllChildren="True" />
+        <Type Name="LibraryTab" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor()" Analyze="True" />
+          <Member Name="#_contentLoaded" Analyze="True" />
+          <Member Name="#_CreateDelegate(System.Type,System.String)" Analyze="True" />
+          <Member Name="#InitializeComponent()" Analyze="True" />
+          <Member Name="#libraries" Analyze="True" />
+          <Member Name="#playlists" Analyze="True" />
+          <Member Name="#System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)" Analyze="True" />
+         </Members>
+        </Type>
+        <Type Name="OutlineTab" Analyze="True" AnalyzeAllChildren="True" />
+        <Type Name="PlaylistDataTemplateSelector" Analyze="True" AnalyzeAllChildren="True" />
+        <Type Name="RibbonControl" Analyze="True" AnalyzeAllChildren="True" />
+        <Type Name="SlidesTab" Analyze="True" AnalyzeAllChildren="True" />
+       </Types>
+      </Namespace>
+      <Namespace Name="SmartPresenter.UI.UserControls.Properties" Analyze="True" AnalyzeAllChildren="True" />
+      <Namespace Name="SmartPresenter.UI.UserControls.Resources" Analyze="True" AnalyzeAllChildren="True" />
+      <Namespace Name="SmartPresenter.UI.UserControls.ViewModel" Analyze="True" AnalyzeAllChildren="False">
+       <Types AnalyzeAllChildren="False">
+        <Type Name="DocumentBaseView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.DocumentBase)" Analyze="True" />
+          <Member Name="#_isEditable" Analyze="True" />
+          <Member Name="#&lt;Parent&gt;k__BackingField" Analyze="True" />
+          <Member Name="#Category" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#IsEditable" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Name" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#op_Explicit(SmartPresenter.UI.UserControls.ViewModel.DocumentBaseView):SmartPresenter.BO.Common.DocumentBase" Analyze="True" />
+          <Member Name="#Parent" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Size" Analyze="True" AnalyzeAllChildren="True" />
+         </Members>
+        </Type>
+        <Type Name="LibraryTabViewModel" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor()" Analyze="True" />
+          <Member Name="#_libraries" Analyze="True" />
+          <Member Name="#_playlists" Analyze="True" />
+          <Member Name="#&lt;AddLibraryCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;AddPlaylistCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;AddPlaylistGroupCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;AddPresentationToLibraryCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;AddPresentationToPlaylistCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;ChangeLibraryLocationCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;RemoveLibraryCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;RemovePlaylistCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#&lt;SelectCellContentCommand&gt;k__BackingField" Analyze="True" />
+          <Member Name="#AddLibraryCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#AddLibraryCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#AddPlaylistCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#AddPlaylistCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#AddPlaylistGroupCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#AddPlaylistGroupCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#AddPresentationToLibraryCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#AddPresentationToLibraryCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#AddPresentationToPlaylistCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#AddPresentationToPlaylistCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#ChangeLibraryLocationCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#ChangeLibraryLocationCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#CreateCommands()" Analyze="True" />
+          <Member Name="#Libraries" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Playlists" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#RemoveLibraryCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#RemoveLibraryCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#RemovePlaylistCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#RemovePlaylistCommand_Executed(System.Object)" Analyze="True" />
+          <Member Name="#SelectCellContentCommand" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#SelectCellContentCommand_Executed(System.Object)" Analyze="True" />
+         </Members>
+        </Type>
+        <Type Name="LibraryTabViewModel+&lt;&gt;c__DisplayClass2" Analyze="True" AnalyzeAllChildren="True" />
+        <Type Name="LibraryView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.Library)" Analyze="True" />
+          <Member Name="#_isCategoryColumnVisible" Analyze="True" />
+          <Member Name="#_isSizeColumnVisible" Analyze="True" />
+          <Member Name="#_library" Analyze="True" />
+          <Member Name="#_presentations" Analyze="True" />
+          <Member Name="#CreateView()" Analyze="True" />
+          <Member Name="#IsCategoryColumnVisible" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#IsSizeColumnVisible" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Location" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Name" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#Presentations" Analyze="True" AnalyzeAllChildren="True" />
+         </Members>
+        </Type>
+        <Type Name="PlaylistBaseView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.PlaylistBase)" Analyze="True" />
+          <Member Name="#&lt;Parent&gt;k__BackingField" Analyze="True" />
+          <Member Name="#Name" Analyze="True" AnalyzeAllChildren="True" />
+          <Member Name="#op_Explicit(SmartPresenter.UI.UserControls.ViewModel.PlaylistBaseView):SmartPresenter.BO.Common.PlaylistBase" Analyze="True" />
+          <Member Name="#Parent" Analyze="True" AnalyzeAllChildren="True" />
+         </Members>
+        </Type>
+        <Type Name="PlaylistGroupView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.PlaylistBase)" Analyze="True" />
+          <Member Name="#_playlists" Analyze="True" />
+          <Member Name="#CreateView()" Analyze="True" />
+          <Member Name="#Playlists" Analyze="True" AnalyzeAllChildren="True" />
+         </Members>
+        </Type>
+        <Type Name="PlaylistView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.PlaylistBase)" Analyze="True" />
+          <Member Name="#_presentations" Analyze="True" />
+          <Member Name="#CreateView()" Analyze="True" />
+          <Member Name="#Presentations" Analyze="True" AnalyzeAllChildren="True" />
+         </Members>
+        </Type>
+        <Type Name="PresentationView" Analyze="True" AnalyzeAllChildren="False">
+         <Members AnalyzeAllChildren="False">
+          <Member Name="#.ctor(SmartPresenter.BO.Common.DocumentBase)" Analyze="True" />
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+     <Resources AnalyzeAllChildren="True" />
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityTransparencyRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="10.0">
+  <Targets>
+   <Target Name="$(ProjectDir)/../Build/Debug/SmartPresenter.UI.UserControls.dll">
+    <Modules>
+     <Module Name="smartpresenter.ui.usercontrols.dll">
+      <Namespaces>
+       <Namespace Name="SmartPresenter.UI.UserControls">
+        <Types>
+         <Type Name="LibraryTab">
+          <Members>
+           <Member Name="#_CreateDelegate(System.Type,System.String)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2013-09-20 08:37:04Z">
+              <Issue>
+               <Item>'LibraryTab._CreateDelegate(Type, string)'</Item>
+              </Issue>
+              <Notes>
+               <User Name="vibhore1711">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#libraries">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Excluded" Created="2013-09-20 08:37:04Z">
+              <Issue>
+               <Item>'LibraryTab.libraries'</Item>
+              </Issue>
+              <Notes>
+               <User Name="vibhore1711">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#playlists">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Excluded" Created="2013-09-20 08:37:04Z">
+              <Issue>
+               <Item>'LibraryTab.playlists'</Item>
+              </Issue>
+              <Notes>
+               <User Name="vibhore1711">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Notes>
+   <User Name="vibhore1711">
+    <Note Id="0" Modified="2013-09-20 08:49:34Z">Element named inside XAML are considered as bad code by FXCop. As it is false warning and these names are needed for ElementName binding purpose, so excluding.</Note>
+   </User>
+  </Notes>
+  <Rules>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace SmartPresenter.UI.Web.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Smart Presenter Web Portal";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Contact Us.";
+
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Account");
+        }
+    }
+}

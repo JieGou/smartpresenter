@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Code/Database/SmartPresenterCloudDB_log.ldf
+/Code/Database/SmartPresenterCloudDB.mdf

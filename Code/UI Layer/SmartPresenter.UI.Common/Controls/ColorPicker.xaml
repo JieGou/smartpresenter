@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Common.Controls.ColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"  
+             xmlns:prism="http://www.codeplex.com/prism"
+             mc:Ignorable="d" Width="150" Height="150"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Text="Theme Colors" Background="LightGray" FontWeight="Bold" Margin="5"/>
+        <ListBox ItemsSource="{Binding AllColors}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle x:Name="content" Width="10" Height="10" Margin="1" Fill="{Binding}" Stroke="Black" StrokeThickness="1" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                        <Interactivity:Interaction.Triggers>
+                            <Interactivity:EventTrigger EventName="MouseEnter">
+                                <Interactions:ChangePropertyAction TargetName="content" PropertyName="Stroke">
+                                    <Interactions:ChangePropertyAction.Value>
+                                        <SolidColorBrush Color="Orange"/>
+                                    </Interactions:ChangePropertyAction.Value>
+                                </Interactions:ChangePropertyAction>
+                            </Interactivity:EventTrigger>
+                            <Interactivity:EventTrigger EventName="MouseLeave">
+                                <Interactions:ChangePropertyAction TargetName="content" PropertyName="Stroke">
+                                    <Interactions:ChangePropertyAction.Value>
+                                        <SolidColorBrush Color="Black"/>
+                                    </Interactions:ChangePropertyAction.Value>
+                                </Interactions:ChangePropertyAction>
+                            </Interactivity:EventTrigger>
+                        </Interactivity:Interaction.Triggers>
+                    </Rectangle>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="6" Columns="10"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartPresenter.BO.Common</RootNamespace>
+    <AssemblyName>SmartPresenter.BO.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>experimental</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SmartPresenterSigningKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\Libraries\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=ce56c8006386e5de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Encoder, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Expression\Microsoft.Expression.Encoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Encoder.Utilities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Expression\Microsoft.Expression.Encoder.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\FlowDocumentHelper.cs" />
+    <Compile Include="Entities\Media\Factory\AbstractShapeFactory.cs" />
+    <Compile Include="Entities\Media\Factory\DefaultShapeFactory.cs" />
+    <Compile Include="Entities\Media\Factory\NullShapeFactory.cs" />
+    <Compile Include="Enums\LibraryType.cs" />
+    <Compile Include="Enums\TransitionOptions.cs" />
+    <Compile Include="Enums\UserAccountType.cs" />
+    <Compile Include="Interfaces\Entities\IFileSource.cs" />
+    <Compile Include="Interfaces\Sync\ISync.cs" />
+    <Compile Include="Interfaces\Sync\ISyncDown.cs" />
+    <Compile Include="Interfaces\Sync\ISyncUp.cs" />
+    <Compile Include="Interfaces\UserAccount\IUserAccount.cs" />
+    <Compile Include="Interfaces\UserAccount\IUserAccountFactory.cs" />
+    <Compile Include="Interfaces\UserAccount\IUserProfile.cs" />
+    <Compile Include="Interfaces\UserAccount\IUserProfileFactory.cs" />
+    <Compile Include="Service References\CloudSyncServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LocalSyncServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CloudSyncSettings.cs" />
+    <Compile Include="Settings\LocalSyncSettings.cs" />
+    <Compile Include="Settings\SettingsBase.cs" />
+    <Compile Include="Settings\SyncSettings.cs" />
+    <Compile Include="Settings\UISettings.cs" />
+    <Compile Include="Sync\CloudSyncServer.cs" />
+    <Compile Include="Sync\LocalSyncServer.cs" />
+    <Compile Include="Transitions\CoverTransition.cs" />
+    <Compile Include="Transitions\CutTransition.cs" />
+    <Compile Include="Transitions\DissolveTransition.cs" />
+    <Compile Include="Transitions\FadeTransition.cs" />
+    <Compile Include="Transitions\FlashTransition.cs" />
+    <Compile Include="Transitions\NoneTransition.cs" />
+    <Compile Include="Transitions\PushTransition.cs" />
+    <Compile Include="Transitions\RandomBarsTransition.cs" />
+    <Compile Include="Transitions\RevealTransition.cs" />
+    <Compile Include="Transitions\ShapeTransition.cs" />
+    <Compile Include="Transitions\SplitTransition.cs" />
+    <Compile Include="Transitions\Transition.cs" />
+    <Compile Include="Entities\Library\AudioLibrary.cs" />
+    <Compile Include="Entities\Library\Factory\AudioLibraryFactory.cs" />
+    <Compile Include="Entities\Library\Factory\MediaLibraryFactory.cs" />
+    <Compile Include="Entities\Library\Factory\PresentationLibraryFactory.cs" />
+    <Compile Include="Entities\Library\MediaLibrary.cs" />
+    <Compile Include="Entities\Library\PresentationLibrary.cs" />
+    <Compile Include="Entities\Media\Audio.cs" />
+    <Compile Include="Entities\Media\Circle.cs" />
+    <Compile Include="Entities\Media\Common\ColorWithOpacity.cs" />
+    <Compile Include="Entities\Media\Common\Font.cs" />
+    <Compile Include="Entities\Media\Common\Outline.cs" />
+    <Compile Include="Entities\Media\DVD.cs" />
+    <Compile Include="Entities\Media\Ellipse.cs" />
+    <Compile Include="Entities\Media\Factory\AudioFactory.cs" />
+    <Compile Include="Entities\Media\Factory\EllipseFactory.cs" />
+    <Compile Include="Entities\Media\Factory\DVDFactory.cs" />
+    <Compile Include="Entities\Media\Factory\ImageFactory.cs" />
+    <Compile Include="Entities\Media\Factory\LiveVideoFactory.cs" />
+    <Compile Include="Entities\Media\Factory\CircleFactory.cs" />
+    <Compile Include="Entities\Media\Factory\PolygonFactory.cs" />
+    <Compile Include="Entities\Media\Factory\RectangleFactory.cs" />
+    <Compile Include="Entities\Media\Factory\SquareFactory.cs" />
+    <Compile Include="Entities\Media\Factory\TextFactory.cs" />
+    <Compile Include="Entities\Media\Factory\TriangleFactory.cs" />
+    <Compile Include="Entities\Media\Factory\VideoFactory.cs" />
+    <Compile Include="Entities\Media\Image.cs" />
+    <Compile Include="Entities\Media\Line.cs" />
+    <Compile Include="Entities\Media\LiveVideo.cs" />
+    <Compile Include="Entities\Media\NullShape.cs" />
+    <Compile Include="Entities\Media\Path.cs" />
+    <Compile Include="Entities\Media\Rectangle.cs" />
+    <Compile Include="Entities\Media\Square.cs" />
+    <Compile Include="Entities\Media\Text.cs" />
+    <Compile Include="Entities\Media\Video.cs" />
+    <Compile Include="Entities\Playlist\AudioPlaylist.cs" />
+    <Compile Include="Entities\Playlist\AudioPlaylistGroup.cs" />
+    <Compile Include="Entities\Playlist\Factory\AudioPlaylistFactory.cs" />
+    <Compile Include="Entities\Playlist\Factory\MediaPlaylistFactory.cs" />
+    <Compile Include="Entities\Playlist\MediaPlaylist.cs" />
+    <Compile Include="Entities\Playlist\MediaPlaylistGroup.cs" />
+    <Compile Include="Entities\Playlist\NullPlaylist.cs" />
+    <Compile Include="Entities\Playlist\Factory\PresentationPlaylistFactory.cs" />
+    <Compile Include="Entities\Media\Polygon.cs" />
+    <Compile Include="Entities\Presentation\NullPresentation.cs" />
+    <Compile Include="Entities\Playlist\PresentationPlaylist.cs" />
+    <Compile Include="Entities\Playlist\PresentationPlaylistGroup.cs" />
+    <Compile Include="Entities\Presentation\Presentation.cs" />
+    <Compile Include="Entities\Presentation\Factory\PresentationFactory.cs" />
+    <Compile Include="Entities\Slide\NullSlide.cs" />
+    <Compile Include="Entities\Slide\Slide.cs" />
+    <Compile Include="Entities\Slide\Factory\SlideFactory.cs" />
+    <Compile Include="Entities\Media\Triangle.cs" />
+    <Compile Include="Enums\AudioChannel.cs" />
+    <Compile Include="Enums\PlaybackState.cs" />
+    <Compile Include="Enums\PresentationType.cs" />
+    <Compile Include="Enums\MediaState.cs" />
+    <Compile Include="Enums\PlaylistType.cs" />
+    <Compile Include="Enums\SlideShowStartMode.cs" />
+    <Compile Include="Enums\SlideType.cs" />
+    <Compile Include="Enums\TextAlignment.cs" />
+    <Compile Include="Enums\TransitionTypes.cs" />
+    <Compile Include="Interfaces\Factory\IShapeFactory.cs" />
+    <Compile Include="Interfaces\Entities\ILibrary.cs" />
+    <Compile Include="Entities\Media\Shape.cs" />
+    <Compile Include="Interfaces\Factory\ILibraryFactory.cs" />
+    <Compile Include="Interfaces\Entities\IMedia.cs" />
+    <Compile Include="Interfaces\Entities\IPlaylist.cs" />
+    <Compile Include="Interfaces\Factory\IPlaylistFactory.cs" />
+    <Compile Include="Interfaces\Entities\IPresentation.cs" />
+    <Compile Include="Interfaces\Factory\IPresentationFactory.cs" />
+    <Compile Include="Interfaces\Entities\ISlide.cs" />
+    <Compile Include="Interfaces\Factory\ISlideFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\DisplaySettings.cs" />
+    <Compile Include="Settings\GeneralSettings.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Settings\SocialMediaSettings.cs" />
+    <Compile Include="Transitions\TransitionFactory.cs" />
+    <Compile Include="Transitions\UncoverTransition.cs" />
+    <Compile Include="Transitions\WipeTransition.cs" />
+    <Compile Include="UserAccounts\CloudUserAccount.cs" />
+    <Compile Include="UserAccounts\CloudUserProfile.cs" />
+    <Compile Include="UserAccounts\Factory\UserProfileFactory.cs" />
+    <Compile Include="UserAccounts\LocalUserAccount.cs" />
+    <Compile Include="UserAccounts\Factory\UserAccountFactory.cs" />
+    <Compile Include="UserAccounts\LocalUserProfile.cs" />
+    <Compile Include="UserAccounts\UserAccount.cs" />
+    <Compile Include="UserAccounts\UserProfile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\CloudSyncServiceReference\service.wsdl" />
+    <None Include="Service References\CloudSyncServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CloudSyncServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CloudSyncServiceReference\SmartPresenter.Service.LocalSync.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalSyncServiceReference\service.wsdl" />
+    <None Include="Service References\LocalSyncServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalSyncServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LocalSyncServiceReference\SmartPresenter.Service.LocalSync.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SmartPresenterSigningKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\SmartPresenter.Common\SmartPresenter.Common.csproj">
+      <Project>{0e5ba9b0-55a6-4256-a318-4d6540fb67dd}</Project>
+      <Name>SmartPresenter.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Database Layer\SmartPresenter.Data.Entities\SmartPresenter.Data.Entities.csproj">
+      <Project>{8db7131a-dec2-4a03-8fc5-48058b4908b8}</Project>
+      <Name>SmartPresenter.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Database Layer\SmartPresenter.DO.Common\SmartPresenter.Data.Common.csproj">
+      <Project>{7c7e403c-864e-4ccc-bc88-d30762a28d13}</Project>
+      <Name>SmartPresenter.Data.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CloudSyncServiceReference\" />
+    <WCFMetadataStorage Include="Service References\LocalSyncServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalSyncServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalSyncServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LocalSyncServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudSyncServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudSyncServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudSyncServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

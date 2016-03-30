@@ -1,0 +1,172 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Collections="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+                    xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"                    
+                    xmlns:ViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel"
+                    xmlns:Converters="clr-namespace:SmartPresenter.UI.Common.Converters;assembly=SmartPresenter.UI.Common"
+                    xmlns:Media="clr-namespace:SmartPresenter.UI.Controls.Media"
+                    xmlns:Local="clr-namespace:SmartPresenter.UI.Controls">
+
+    <Converters:ModeToOrientationConverter x:Key="modeToOrientationConverter"/>
+
+    <ContextMenu x:Key="MediaContextMenu">
+        <MenuItem Header="Edit..." Command="{Binding DataContext.EditMediaCommand, RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                            AncestorType=UserControl}}" CommandParameter="{Binding PlacementTarget.DataContext,
+                                             RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                            AncestorType=ContextMenu}}"/>
+    </ContextMenu>
+
+    <ItemsPanelTemplate x:Key="MediaViewerItemsPanelTemplate">
+        <WrapPanel MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Media:MediaViewer}}}" 
+                   Orientation="{Binding Mode, Converter={StaticResource modeToOrientationConverter}}"/>
+    </ItemsPanelTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:ImageView}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="outerBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="5" MinWidth="200" MinHeight="150" Margin="5" Grid.Row="0">
+                <Border x:Name="innerBorder" BorderBrush="Gray" BorderThickness="2" Background="White" CornerRadius="5">
+                    <Image MaxWidth="200" MaxHeight="150" Margin="3">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding Path}" DecodePixelWidth="200" DecodePixelHeight="150"/>
+                        </Image.Source>
+                    </Image>
+                </Border>
+            </Border>
+            <TextBlock x:Name="Label" Text="{Binding Name}" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="{Binding ActualWidth, ElementName=outerBorder}" Grid.Row="1"/>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Value="True">
+                <Setter TargetName="innerBorder" Property="Background" Value="Blue"/>
+                <Setter TargetName="innerBorder" Property="BorderBrush" Value="Blue"/>
+                <Setter TargetName="Label" Property="Foreground" Value="Black"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModel:VideoView}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="outerBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="5" MinWidth="200" MinHeight="150" Margin="5">
+                <Border x:Name="innerBorder" BorderBrush="Gray" BorderThickness="2" Background="White" CornerRadius="5">
+                    <Image Source="{Binding ThumbnailPath}" MaxWidth="200" MaxHeight="150" Stretch="{Binding Stretch}" Opacity="{Binding Opacity}" Margin="3"/>
+                </Border>
+            </Border>
+            <TextBlock x:Name="Label" Text="{Binding Name}" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="{Binding ActualWidth, ElementName=outerBorder}" Grid.Row="1"/>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Value="True">
+                <Setter TargetName="innerBorder" Property="Background" Value="Blue"/>
+                <Setter TargetName="innerBorder" Property="BorderBrush" Value="Blue"/>
+                <Setter TargetName="Label" Property="Foreground" Value="Black"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <GridView x:Key="DetailsView">
+        <GridViewColumn Header="Index" DisplayMemberBinding="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ListViewItem}}"/>
+        <GridViewColumn Header="Preview">
+            <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Path}" MaxWidth="100" MaxHeight="20"/>
+                </DataTemplate>
+            </GridViewColumn.CellTemplate>
+        </GridViewColumn>
+        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+        <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}"/>
+        <GridViewColumn Header="Extension" DisplayMemberBinding="{Binding Extension}"/>
+        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
+        <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}"/>
+    </GridView>
+
+    <Style TargetType="ListViewItem">
+        <Setter Property="ContextMenu" Value="{StaticResource MediaContextMenu}"/>
+    </Style>
+
+    <Style TargetType="{x:Type ListView}">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+        </Style.Resources>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Mode}" Value="Details">
+                <Setter Property="View" Value="{StaticResource DetailsView}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <x:Array x:Key="SortOptions" Type="{x:Type System:String}">
+        <System:String>Index</System:String>
+        <System:String>Name</System:String>
+        <System:String>Path</System:String>
+        <System:String>Type</System:String>
+        <System:String>Size</System:String>
+        <System:String>Duration</System:String>
+    </x:Array>
+
+    <Grid x:Key="MediaOptionsGrid" FlowDirection="LeftToRight">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Images" Margin="5"/>
+            <ProgressBar Value="{Binding ImageCount, Mode=OneWay}" MinHeight="20" Margin="5"
+                         Minimum="0" Maximum="{Binding TotalCount, ElementName=ViewModel, Mode=OneWay}"/>
+            <TextBlock Margin="5">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} Images in {1} Media Items">
+                        <Binding Path="ImageCount" Mode="OneWay"/>
+                        <Binding Path="TotalCount" Mode="OneWay"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Videos" Margin="5"/>
+            <ProgressBar Value="{Binding VideoCount, Mode=OneWay}" MinHeight="20" Margin="5"
+                         Minimum="0" Maximum="{Binding TotalCount, ElementName=ViewModel, Mode=OneWay}"/>
+            <TextBlock Margin="5">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} Videos in {1} Media Items">
+                        <Binding Path="VideoCount" Mode="OneWay"/>
+                        <Binding Path="TotalCount" Mode="OneWay"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="Search" HorizontalAlignment="Left" Margin="5" />
+            <TextBox MinWidth="200" VerticalAlignment="Top" Margin="5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="3" >
+            <StackPanel>
+                <CheckBox Content="Hide Images" Margin="5"/>
+                <CheckBox Content="Hide Videos" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Sort By :" Margin="5"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource SortOptions}}" SelectedIndex="0" VerticalAlignment="Top" MinWidth="150" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Content="Done" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Padding="10 0">
+            <Interactivity:Interaction.Triggers>
+                <Interactivity:EventTrigger EventName="Click">
+                    <Interactions:ChangePropertyAction TargetName="mediaOptionsExpander" PropertyName="IsExpanded" Value="False" />
+                </Interactivity:EventTrigger>
+            </Interactivity:Interaction.Triggers>
+        </Button>
+    </Grid>
+
+</ResourceDictionary>

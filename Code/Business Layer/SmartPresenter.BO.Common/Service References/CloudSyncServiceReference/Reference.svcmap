@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c64c40c3-a359-404e-b94d-67a7804575c6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3450/SmartPresenter.Service.CloudSyncService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="15c3b5be-0a5d-4dc3-a3d8-ec24b40c38f4" SourceId="1" SourceUrl="http://localhost:3450/SmartPresenter.Service.CloudSyncService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="f865dfcd-55cf-484d-bc0c-12091f61e8a2" SourceId="1" SourceUrl="http://localhost:3450/SmartPresenter.Service.CloudSyncService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="697ee249-8d9e-437b-ba59-179d86966b35" SourceId="1" SourceUrl="http://localhost:3450/SmartPresenter.Service.CloudSyncService/mex" />
+    <MetadataFile FileName="SmartPresenter.Service.LocalSync.xsd" MetadataType="Schema" ID="eeaf39c5-c3af-46ff-9863-7923cc5163d9" SourceId="1" SourceUrl="http://localhost:3450/SmartPresenter.Service.CloudSyncService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

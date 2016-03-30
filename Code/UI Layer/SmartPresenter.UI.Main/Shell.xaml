@@ -1,0 +1,34 @@
+﻿<Window x:Class="SmartPresenter.UI.Main.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:SmartPresenter.UI.Controls;assembly=SmartPresenter.UI.Controls"
+        xmlns:SettingsControls="clr-namespace:SmartPresenter.UI.Controls.Settings;assembly=SmartPresenter.UI.Controls"
+        xmlns:Common="clr-namespace:SmartPresenter.UI.Common;assembly=SmartPresenter.UI.Common"
+        xmlns:AvalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:prism="http://www.codeplex.com/prism"
+        Title="Smart Presenter"
+        Width="1368"
+        Height="780"
+        WindowState="Maximized">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" prism:RegionManager.RegionName="{x:Static Common:RegionNames.MainToolBarRegion}"/>
+        <ContentControl Grid.Row="1" Margin="0 0 5 0" prism:RegionManager.RegionName="{x:Static Common:RegionNames.MainRegion}"/>
+    </Grid>
+    <Interactivity:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding SettingsNotificationRequest, Mode=OneWay}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowContent>
+                    <SettingsControls:SettingsView/>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </Interactivity:Interaction.Triggers>
+</Window>

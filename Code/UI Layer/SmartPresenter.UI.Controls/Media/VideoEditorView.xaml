@@ -1,0 +1,336 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Controls.Media.VideoEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Linq="clr-namespace:System.Linq;assembly=System.Core"
+             xmlns:Media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+             xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions" 
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:Enums="clr-namespace:SmartPresenter.BO.Common.Enums;assembly=SmartPresenter.BO.Common"
+             xmlns:CommonEnums="clr-namespace:SmartPresenter.Common.Enums;assembly=SmartPresenter.Common"
+             xmlns:Local="clr-namespace:SmartPresenter.UI.Controls.Media"
+             xmlns:UICommon="clr-namespace:SmartPresenter.UI.Common;assembly=SmartPresenter.UI.Common"
+             xmlns:ViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartPresenter.UI.Controls;component/Media/VideoEditorViewResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type Sys:Enum}" x:Key="AudioChannelEnumValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="Enums:AudioChannel" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type Sys:Enum}" x:Key="VideoFormatEnumValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="CommonEnums:VideoFormat" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type Sys:Enum}" x:Key="StretchEnumValues">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="Media:Stretch" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="HoursRange"
+                    ObjectType="{x:Type Linq:Enumerable}" MethodName="Range">
+                <ObjectDataProvider.MethodParameters>
+                    <Sys:Int32>0</Sys:Int32>
+                    <Sys:Int32>24</Sys:Int32>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="MinutesRange"
+                    ObjectType="{x:Type Linq:Enumerable}" MethodName="Range">
+                <ObjectDataProvider.MethodParameters>
+                    <Sys:Int32>0</Sys:Int32>
+                    <Sys:Int32>60</Sys:Int32>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="SecondsRange"
+                    ObjectType="{x:Type Linq:Enumerable}" MethodName="Range">
+                <ObjectDataProvider.MethodParameters>
+                    <Sys:Int32>0</Sys:Int32>
+                    <Sys:Int32>60</Sys:Int32>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <UICommon:TimeSpanToDoubleConverter x:Key="TimeSpanToDoubleConverter"/>
+
+            <Style x:Key="SlideChildStyle" BasedOn="{StaticResource SlideChildStyleBase}">
+                <EventSetter Event="ListBoxItem.PreviewMouseDown" Handler="Shape_MouseDown"/>
+                <EventSetter Event="ListBoxItem.PreviewMouseMove" Handler="Shape_MouseMove"/>
+                <EventSetter Event="ListBoxItem.PreviewMouseUp" Handler="Shape_MouseUp"/>
+                <EventSetter Event="ListBoxItem.PreviewKeyDown" Handler="Shape_KeyDown"/>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" MinWidth="1000"/>
+            <ColumnDefinition Width="*" MinWidth="175"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0 0 2 0">
+            <Border BorderThickness="1" BorderBrush="Black" Background="Gray">
+                <Grid Margin="0 0 2 0" Grid.Row="0" Grid.Column="0">
+                    <Image Source="{Binding SelectedVideo.ThumbnailPath}"/>
+                    <MediaElement x:Name="mediaElement" Source="{Binding SelectedVideo.Path}" LoadedBehavior="Manual" UnloadedBehavior="Stop" ScrubbingEnabled="True" />
+                    <ListBox x:Name="editorListBox" Background="Transparent" ItemsSource="{Binding Overlays}" ItemsPanel="{StaticResource SlideChildrenPanelTemplate}" SelectionMode="Single" 
+                             ItemContainerStyle="{StaticResource SlideChildStyle}" SelectedItem="{Binding SelectedOverlay}"/>
+                </Grid>
+            </Border>
+            <StackPanel x:Name="PlaybackControls" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Opacity="0.01">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Slider x:Name="progressSlider" Width="{Binding ActualWidth, ElementName=mediaElement}" Style="{StaticResource Horizontal_Slider}" TickPlacement="Both"
+                             Minimum="0" Maximum="{Binding PlaybackDuration}" Value="{Binding PlaybackProgress, Mode=TwoWay}" Foreground="{StaticResource NormalFillBrush}" HorizontalAlignment="Center">
+                        <Interactivity:Interaction.Triggers>
+                            <Interactivity:EventTrigger EventName="PreviewMouseUp">
+                                <Interactivity:InvokeCommandAction Command="{Binding SeekCommand}" />
+                            </Interactivity:EventTrigger>
+                        </Interactivity:Interaction.Triggers>
+                    </Slider>
+                </StackPanel>
+
+                <Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Margin="6 0" Width="25" Height="25" Style="{StaticResource StopButtonStyle}" Command="{Binding StopCommand}"/>
+                        <Button BorderThickness="0" Margin="3 0" Width="42" Height="20" Style="{StaticResource GoToBeginButtonStyle}" Command="{Binding GoToBeginCommand}"/>
+                        <RepeatButton Margin="7 0 5 0" Width="50" Height="30" BorderThickness="0" Interval="100" Style="{StaticResource RewindButtonStyle}" Command="{Binding RewindCommand}"/>
+                        <ToggleButton Width="30" Height="30" Margin="8,0,6,0" BorderThickness="0" Style="{StaticResource PlayToggleButtonStyle}" Command="{Binding PlayPauseCommand}"/>
+                        <RepeatButton Margin="4 0 2 0" Width="50" Height="30"  BorderThickness="0" Interval="100" Style="{StaticResource ForwardButtonStyle}" Command="{Binding ForwardCommand}"/>
+                        <Button Margin="8 0 8 0" Width="42" Height="20"  BorderThickness="0" Style="{StaticResource GoToEndButtonStyle}" Command="{Binding GoToEndCommand}"/>
+                        <Button Content="M" Margin="4 0" Width="28" Height="28" Command="{Binding MuteCommand}" Background="{StaticResource NormalFillBrush}"/>
+                        <Slider Width="100" Style="{StaticResource Horizontal_Slider}" Minimum="0" Maximum="1" Value="{Binding Volume}" Margin="6 0" VerticalAlignment="Center"
+                            TickPlacement="None"/>
+                        <Button Content="[" Margin="2 -10 10 0"  MaxHeight="60" Style="{StaticResource MarkButtonStyle}" Command="{Binding MarkBeginCommand}"/>
+                        <Button Content="]" Margin="6 -10 6 0" MaxHeight="60" Style="{StaticResource MarkButtonStyle}" Command="{Binding MarkEndCommand}"/>
+                        <Button Content="X" Margin="3 -7 3 0" MaxHeight="60" Command="{Binding CutCommand}" Style="{StaticResource MarkButtonStyle}"/>
+                    </StackPanel>
+                    <Button Width="35" Height="35" Margin="5" Background="Transparent" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <StackPanel.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard Duration="00:00:00.5">
+                                <DoubleAnimation Storyboard.TargetName="PlaybackControls" Storyboard.TargetProperty="Opacity" To="1" FillBehavior="HoldEnd"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Duration="00:00:05" BeginTime="00:00:04.09">
+                                <DoubleAnimation Storyboard.TargetName="PlaybackControls" Storyboard.TargetProperty="Opacity" To="0.01" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </StackPanel.Triggers>
+
+            </StackPanel>
+        </Grid>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Left" Background="Gray"/>
+        <TabControl Grid.Row="0" Grid.Column="1" Margin="7 0 0 0">
+            <TabItem Header="Properties">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Display Name : " HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                    <TextBox Text ="{Binding DisplayName}" HorizontalAlignment="Left" MinWidth="200" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Size : " HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding FileSize}" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Duration : " HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding Duration}" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Frame Rate : " HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding FrameRate}" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Aspect Ratio : " HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding AspectRatio}" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Frame Size : " HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding VideoSize}" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="File Extension : " HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding FileExtension}" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" Margin="5"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Info">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Title : " HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text ="{Binding Title}" HorizontalAlignment="Left" MinWidth="200" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Description : " HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding Description}" MaxWidth="200" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="Copyright : " HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                    <TextBlock Text="{Binding Copyright}" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Playback">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Speed : " HorizontalAlignment="Right" Margin="5" Grid.Row="0" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="5" HorizontalAlignment="Left" Margin="5" Style="{StaticResource Horizontal_Slider}" Grid.Row="0" Grid.Column="1"/>
+                    <TextBlock Text="Volume : " HorizontalAlignment="Right" Margin="5" Grid.Row="1" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" SmallChange="0.1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource Horizontal_Slider}" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="Stretch : " HorizontalAlignment="Right" Margin="5" Grid.Row="2" Grid.Column="0"/>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource StretchEnumValues}}" SelectedIndex="0" HorizontalAlignment="Left" Margin="5" MinWidth="100" Grid.Row="2" Grid.Column="1"/>
+                    <TextBlock Text="Balance : " HorizontalAlignment="Right" Margin="5" Grid.Row="3" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" SmallChange="0.1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource Horizontal_Slider}" Grid.Row="3" Grid.Column="1"/>
+                    <TextBlock Text="Start Time : " HorizontalAlignment="Right" Margin="5" Grid.Row="4" Grid.Column="0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="5">
+                        <TextBlock Text="H:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource HoursRange}}" Margin="2" MinWidth="38"/>
+                        <TextBlock Text="M:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource MinutesRange}}" Margin="2" MinWidth="38"/>
+                        <TextBlock Text="S:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource SecondsRange}}" Margin="2" MinWidth="38"/>
+                    </StackPanel>
+                    <TextBlock Text="End Time : " HorizontalAlignment="Right" Margin="5" Grid.Row="5" Grid.Column="0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="5">
+                        <TextBlock Text="H:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource HoursRange}}" Margin="2" MinWidth="38"/>
+                        <TextBlock Text="M:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource MinutesRange}}" Margin="2" MinWidth="38"/>
+                        <TextBlock Text="S:" Margin="2"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource SecondsRange}}" Margin="2" MinWidth="38"/>
+                    </StackPanel>
+                    <TextBlock Text="Opacity : " HorizontalAlignment="Right" Margin="5" Grid.Row="6" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" SmallChange="0.1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource Horizontal_Slider}" Grid.Row="6" Grid.Column="1"/>
+                    <CheckBox Content="Mute" HorizontalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Edit">
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TreeView BorderThickness="0" Background="Transparent">
+                            <TreeViewItem Header="Video Settings" IsExpanded="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Output Format : " HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                                    <ComboBox ItemsSource="{Binding Source={StaticResource VideoFormatEnumValues}}" SelectedValue="{Binding MediaItem.TargetVideoProfile.VideoFormat}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="5" MinWidth="100"/>
+                                    <TextBlock Text="Frame Rate : " HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                                    <Toolkit:IntegerUpDown Minimum="20" Maximum="80" Value="{Binding MediaItem.TargetVideoProfile.FrameRate}" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                                    <GroupBox Header="Crop" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 0 -29 0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="X : " HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                                            <Toolkit:IntegerUpDown Text="{Binding MediaItem.TargetVideoProfile.CropRect.X}" MinWidth="100" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                                            <TextBlock Text="px" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="5"/>
+                                            <TextBlock Text="Y : " HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                                            <Toolkit:IntegerUpDown Text="{Binding MediaItem.TargetVideoProfile.CropRect.Y}" MinWidth="100" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                                            <TextBlock Text="px" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="5"/>
+                                            <TextBlock Text="Width : " HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                                            <Toolkit:IntegerUpDown Text="{Binding MediaItem.TargetVideoProfile.CropRect.Width}" MinWidth="100" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                                            <TextBlock Text="px" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Margin="5"/>
+                                            <TextBlock Text="Height : " HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="5"/>
+                                            <Toolkit:IntegerUpDown Text="{Binding MediaItem.TargetVideoProfile.CropRect.Height}" MinWidth="100" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                                            <TextBlock Text="px" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="5"/>
+                                        </Grid>
+                                    </GroupBox>
+                                    <CheckBox Content="Auto Fit" IsChecked="{Binding MediaItem.TargetVideoProfile.AutoFit, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                                              Margin="5" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Audio Settings"  IsExpanded="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Bit Rate : " HorizontalAlignment="Right" TextAlignment="Right" MinWidth="88" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                                    <Toolkit:IntegerUpDown Value="{Binding MediaItem.TargetAudioProfile.BitRate}" HorizontalAlignment="Left" MinWidth="100" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                                    <TextBlock Text="Kbps" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="5"/>
+                                    <TextBlock Text="Volume : " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5"/>
+                                    <Slider x:Name="volumeSlider" Minimum="-5" Maximum="5" Value="{Binding MediaItem.TargetAudioProfile.AudioGainLevel}" Grid.Row="3" Grid.Column="1" Margin="3" SmallChange="1" LargeChange="2" Style="{StaticResource Horizontal_Slider}"/>
+                                    <TextBlock Text="{Binding Value, ElementName=volumeSlider, StringFormat={}{0:#.##}}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="5" MinWidth="20"/>
+                                    <TextBlock Text="Channels : " HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                                    <ComboBox ItemsSource="{Binding Source={StaticResource AudioChannelEnumValues}}" SelectedValue="{Binding AudioChannelForEncoding}" HorizontalAlignment="Left" MinWidth="100" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                                </Grid>
+                            </TreeViewItem>
+                        </TreeView>
+                        <Button Content="Transcode" Command="{Binding EncodeCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="20 5" Margin="5"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Effects"/>
+        </TabControl>
+        <Local:VideoEditorTimeline Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 8 0 0" 
+                                   TimelinePosition="{Binding DataContext.PlaybackProgress, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Mode=TwoWay, Converter={StaticResource TimeSpanToDoubleConverter}}"/>
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="4" Margin="0 2 0 0" Width="{Binding ActualWidth, ElementName=mainGrid}" ResizeDirection="Rows" 
+                      VerticalAlignment="Top" Background="Gray"/>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudDBService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:45610/Services/CloudDBService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SmartPresenter.Service.CloudSyncService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICloudDBService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="ICloudDBService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICloudDBService">
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICloudDBService/GetAllUsers" message="tns:ICloudDBService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICloudDBService/GetAllUsersResponse" message="tns:ICloudDBService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICloudDBService/AddUser" message="tns:ICloudDBService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICloudDBService/AddUserResponse" message="tns:ICloudDBService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICloudDBService/UpdateUser" message="tns:ICloudDBService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICloudDBService/UpdateUserResponse" message="tns:ICloudDBService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICloudDBService/DeleteUser" message="tns:ICloudDBService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICloudDBService/DeleteUserResponse" message="tns:ICloudDBService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICloudDBService" type="tns:ICloudDBService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/ICloudDBService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/ICloudDBService/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/ICloudDBService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/ICloudDBService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CloudDBService">
+    <wsdl:port name="BasicHttpBinding_ICloudDBService" binding="tns:BasicHttpBinding_ICloudDBService">
+      <soap:address location="http://localhost:45610/Services/CloudDBService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

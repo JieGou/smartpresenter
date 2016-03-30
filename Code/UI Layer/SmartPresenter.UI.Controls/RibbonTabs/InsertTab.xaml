@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:UICommon="clr-namespace:SmartPresenter.UI.Common;assembly=SmartPresenter.UI.Common">
+    <RibbonTab x:Key="InsertTab"
+               Header="Insert"
+               KeyTip="N">
+        <!--  Tables Group  -->
+        <RibbonGroup x:Name="TablesGroup" Header="Tables">
+            <RibbonMenuButton KeyTip="T" Label="Table">
+                <RibbonSeparator />
+                <RibbonMenuItem Header="Insert Table..." KeyTip="I" />
+                <RibbonMenuItem Header="Draw Table" KeyTip="D" />
+                <TextBox MinWidth="100"/>
+            </RibbonMenuButton>
+        </RibbonGroup>
+        <!--  Image Group  -->
+        <RibbonGroup x:Name="ImageGroup" Header="Image">
+            <RibbonButton KeyTip="P" Label="Picture" Command="{x:Static UICommon:EditorCommands.InsertImageCommand}"/>
+            <RibbonMenuButton KeyTip="SC" Label="Screenshot">
+                <RibbonSeparator />
+                <RibbonMenuItem Header="Screen Clipping" KeyTip="C" />
+            </RibbonMenuButton>
+            <RibbonMenuButton KeyTip="A" Label="Photo Album">
+                <RibbonMenuItem Header="New Photo Album" KeyTip="A" />
+                <RibbonMenuItem Header="Edit Photo Album" KeyTip="E" />
+            </RibbonMenuButton>
+        </RibbonGroup>
+        <!--  Illustration Group  -->
+        <RibbonGroup x:Name="IllustrationGroup" Header="Illustration">
+            <RibbonMenuButton KeyTip="SH" Label="Shapes">
+                <RibbonMenuItem KeyTip="SQ" Header="Square" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertSquareCommand}"/>
+                <RibbonMenuItem KeyTip="RN" Header="Rectangle" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertRectangleCommand}"/>
+                <RibbonMenuItem KeyTip="CL" Header="Circle" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertCircleCommand}"/>
+                <RibbonMenuItem KeyTip="EL" Header="Ellipse" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertEllipseCommand}"/>
+                <RibbonMenuItem KeyTip="TR" Header="Triangle" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertTriangleCommand}"/>
+                <RibbonMenuItem KeyTip="PG" Header="Polygon" HorizontalAlignment="Left" Command="{x:Static UICommon:EditorCommands.InsertPolygonCommand}"/>
+            </RibbonMenuButton>
+            <RibbonButton KeyTip="M" Label="SmartArt" />
+            <RibbonButton KeyTip="C"
+                          Label="Chart"
+                          SmallImageSource="/SmartPresenter.UI.Controls;component/Images/Ribbon/Chart.png" />
+        </RibbonGroup>
+        <!--  Links Group  -->
+        <RibbonGroup x:Name="LinksGroup" Header="Links">
+            <RibbonButton KeyTip="I" Label="Hyperlink" />
+            <RibbonButton KeyTip="K" Label="Action" />
+        </RibbonGroup>
+        <!--  Text Group  -->
+        <RibbonGroup x:Name="TextGroup" Header="Text">
+            <RibbonButton KeyTip="X" Label="TextBox" Command="{x:Static UICommon:EditorCommands.InsertTextCommand}"/>
+            <RibbonButton KeyTip="H" Label="Header &amp; Footer" />
+            <RibbonButton KeyTip="D" Label="Date &amp; Time" />
+            <RibbonButton KeyTip="SN" Label="Slide Number" />
+        </RibbonGroup>
+        <!--  Symbols Group  -->
+        <RibbonGroup x:Name="SymbolsGroup" Header="Symbols">
+            <RibbonButton KeyTip="U" Label="Symbols" />
+        </RibbonGroup>
+        <!--  Video Group  -->
+        <RibbonGroup x:Name="VideoGroup" Header="Video">
+            <RibbonMenuButton KeyTip="V" Label="Video">
+                <RibbonMenuItem Header="Video From File" KeyTip="F"  Command="{x:Static UICommon:EditorCommands.InsertVideoCommand}"/>
+                <RibbonMenuItem Header="Video From Website" KeyTip="W" />
+            </RibbonMenuButton>
+        </RibbonGroup>
+        <!--  Audio Group  -->
+        <RibbonGroup x:Name="AudioGroup"
+                     Header="Audio"
+                     KeyTip="O">
+            <RibbonMenuButton Label="Audio">
+                <RibbonMenuItem Header="Audio From File" KeyTip="E"  Command="{x:Static UICommon:EditorCommands.InsertAudioCommand}"/>
+                <RibbonMenuItem Header="Record Audio" KeyTip="R" />
+            </RibbonMenuButton>
+        </RibbonGroup>
+    </RibbonTab>
+</ResourceDictionary>

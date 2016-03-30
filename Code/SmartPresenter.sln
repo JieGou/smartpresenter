@@ -1,0 +1,344 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Layer", "Business Layer", "{B4CE5D6F-7C08-4977-9248-B993E52076D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI Layer", "UI Layer", "{8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Layer", "Database Layer", "{66B21F37-8CAE-4264-B774-60AB4801E90B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7DA0D9F9-CCBB-413C-968B-4D18C5B689D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{70748856-876E-4A01-A53C-1881DBB8CA12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{5EF7D243-FADF-45D5-9AE3-CB469BE3A98A}"
+	ProjectSection(SolutionItems) = preProject
+		..\Libraries\BaseControls.dll = ..\Libraries\BaseControls.dll
+		..\Libraries\Caliburn.Micro.dll = ..\Libraries\Caliburn.Micro.dll
+		..\Libraries\ColorBox.dll = ..\Libraries\ColorBox.dll
+		..\Libraries\DirectShowLib-2005.dll = ..\Libraries\DirectShowLib-2005.dll
+		..\Libraries\DvdLib.dll = ..\Libraries\DvdLib.dll
+		..\Libraries\Prism\EntityFramework.dll = ..\Libraries\Prism\EntityFramework.dll
+		..\Libraries\Prism\EntityFramework.PowerShell.dll = ..\Libraries\Prism\EntityFramework.PowerShell.dll
+		..\Libraries\Prism\EntityFramework.PowerShell.Utility.dll = ..\Libraries\Prism\EntityFramework.PowerShell.Utility.dll
+		..\Libraries\Prism\EntityFramework.SqlServer.dll = ..\Libraries\Prism\EntityFramework.SqlServer.dll
+		..\Libraries\WPFMediaKit\EVRPresenter32.dll = ..\Libraries\WPFMediaKit\EVRPresenter32.dll
+		..\Libraries\WPFMediaKit\EVRPresenter64.dll = ..\Libraries\WPFMediaKit\EVRPresenter64.dll
+		..\Libraries\ffmpeg.exe = ..\Libraries\ffmpeg.exe
+		..\Libraries\HtmlAgilityPack.dll = ..\Libraries\HtmlAgilityPack.dll
+		..\Libraries\log4net.dll = ..\Libraries\log4net.dll
+		..\Libraries\MediaInfo.dll = ..\Libraries\MediaInfo.dll
+		..\Libraries\DirectX\Microsoft.DirectX.AudioVideoPlayback.dll = ..\Libraries\DirectX\Microsoft.DirectX.AudioVideoPlayback.dll
+		..\Libraries\DirectX\Microsoft.DirectX.Direct3D.dll = ..\Libraries\DirectX\Microsoft.DirectX.Direct3D.dll
+		..\Libraries\DirectX\Microsoft.DirectX.Direct3DX.dll = ..\Libraries\DirectX\Microsoft.DirectX.Direct3DX.dll
+		..\Libraries\DirectX\Microsoft.DirectX.dll = ..\Libraries\DirectX\Microsoft.DirectX.dll
+		..\Libraries\Expression\Microsoft.Expression.Controls.dll = ..\Libraries\Expression\Microsoft.Expression.Controls.dll
+		..\Libraries\Expression\Microsoft.Expression.Drawing.dll = ..\Libraries\Expression\Microsoft.Expression.Drawing.dll
+		..\Libraries\Expression\Microsoft.Expression.Effects.dll = ..\Libraries\Expression\Microsoft.Expression.Effects.dll
+		..\Libraries\Expression\Microsoft.Expression.Encoder.Api2.dll = ..\Libraries\Expression\Microsoft.Expression.Encoder.Api2.dll
+		..\Libraries\Expression\Microsoft.Expression.Encoder.dll = ..\Libraries\Expression\Microsoft.Expression.Encoder.dll
+		..\Libraries\Expression\Microsoft.Expression.Encoder.Types.dll = ..\Libraries\Expression\Microsoft.Expression.Encoder.Types.dll
+		..\Libraries\Expression\Microsoft.Expression.Encoder.Utilities.dll = ..\Libraries\Expression\Microsoft.Expression.Encoder.Utilities.dll
+		..\Libraries\Expression\Microsoft.Expression.Framework.dll = ..\Libraries\Expression\Microsoft.Expression.Framework.dll
+		..\Libraries\Expression\Microsoft.Expression.Interactions.dll = ..\Libraries\Expression\Microsoft.Expression.Interactions.dll
+		..\Libraries\Expression\Microsoft.Expression.Prototyping.Interactivity.dll = ..\Libraries\Expression\Microsoft.Expression.Prototyping.Interactivity.dll
+		..\Libraries\Expression\Microsoft.Expression.Prototyping.SketchControls.dll = ..\Libraries\Expression\Microsoft.Expression.Prototyping.SketchControls.dll
+		..\Libraries\Microsoft.Office.Interop.Word.dll = ..\Libraries\Microsoft.Office.Interop.Word.dll
+		..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.Common.dll = ..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.Common.dll
+		..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll = ..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+		..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.Logging.dll = ..\Libraries\Prism\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.Composition.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.Composition.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.Interactivity.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.Interactivity.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.MefExtensions.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.MefExtensions.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.Desktop.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.PubSubEvents.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.PubSubEvents.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.SharedInterfaces.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.SharedInterfaces.dll
+		..\Libraries\Prism\Microsoft.Practices.Prism.UnityExtensions.dll = ..\Libraries\Prism\Microsoft.Practices.Prism.UnityExtensions.dll
+		..\Libraries\Prism\Microsoft.Practices.ServiceLocation.dll = ..\Libraries\Prism\Microsoft.Practices.ServiceLocation.dll
+		..\Libraries\Prism\Microsoft.Practices.Unity.Configuration.dll = ..\Libraries\Prism\Microsoft.Practices.Unity.Configuration.dll
+		..\Libraries\Prism\Microsoft.Practices.Unity.dll = ..\Libraries\Prism\Microsoft.Practices.Unity.dll
+		..\Libraries\Prism\Microsoft.Practices.Unity.RegistrationByConvention.dll = ..\Libraries\Prism\Microsoft.Practices.Unity.RegistrationByConvention.dll
+		..\Libraries\Microsoft.WindowsAPICodePack.dll = ..\Libraries\Microsoft.WindowsAPICodePack.dll
+		..\Libraries\Microsoft.WindowsAPICodePack.Shell.dll = ..\Libraries\Microsoft.WindowsAPICodePack.Shell.dll
+		..\Libraries\Prism\Moq.dll = ..\Libraries\Prism\Moq.dll
+		..\Libraries\Newtonsoft.Json.dll = ..\Libraries\Newtonsoft.Json.dll
+		..\Libraries\Prism\Newtonsoft.Json.dll = ..\Libraries\Prism\Newtonsoft.Json.dll
+		..\Libraries\OFFICE.DLL = ..\Libraries\OFFICE.DLL
+		..\Libraries\PdfSharp.dll = ..\Libraries\PdfSharp.dll
+		..\Libraries\WPFMediaKit\ShaderEffectLibrary.dll = ..\Libraries\WPFMediaKit\ShaderEffectLibrary.dll
+		..\Libraries\System.Data.SQLite.DLL = ..\Libraries\System.Data.SQLite.DLL
+		..\Libraries\Expression\System.Windows.Controls.DataVisualization.Toolkit.dll = ..\Libraries\Expression\System.Windows.Controls.DataVisualization.Toolkit.dll
+		..\Libraries\Expression\System.Windows.Interactivity.dll = ..\Libraries\Expression\System.Windows.Interactivity.dll
+		..\Libraries\WPFMediaKit\System.Windows.Interactivity.dll = ..\Libraries\WPFMediaKit\System.Windows.Interactivity.dll
+		..\Libraries\Visiblox.Charts.dll = ..\Libraries\Visiblox.Charts.dll
+		..\Libraries\WPFMediaKit\WPFMediaKit.dll = ..\Libraries\WPFMediaKit\WPFMediaKit.dll
+		..\Libraries\WPFToolkit.dll = ..\Libraries\WPFToolkit.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Aero.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Metro.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.VS2010.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll
+		..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll = ..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D4567401-8A29-44E9-A82E-0910DEED13BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service Layer", "Service Layer", "{8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Media Management", "Media Management", "{913A43EB-C370-4689-8069-7F4C19763B71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{61C64E59-3C17-4088-AB8E-FEA209F7E996}"
+	ProjectSection(SolutionItems) = preProject
+		Database\SmartPresenterCloudDB.mdf = Database\SmartPresenterCloudDB.mdf
+		Database\SmartPresenterLocalDB.db = Database\SmartPresenterLocalDB.db
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud", "Cloud", "{2186A18C-B84D-41CB-9934-C30B1CFD03CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sync", "Sync", "{53499664-D718-4646-BF84-3C17ED93D583}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlackBox", "BlackBox", "{B3A46FB8-255D-4A07-B81F-E9EC1A8BB3C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{0E3C61A2-2904-4497-8B3C-E6BE2847E954}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{06BD5775-D447-4397-81BC-F4EE27913CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.Main", "UI Layer\SmartPresenter.UI.Main\SmartPresenter.UI.Main.csproj", "{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Common", "Common\SmartPresenter.Common\SmartPresenter.Common.csproj", "{0E5BA9B0-55A6-4256-A318-4D6540FB67DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Common", "Business Layer\SmartPresenter.BO.Common\SmartPresenter.BO.Common.csproj", "{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{76DC3973-F812-4F49-9133-7248018BB9A0} = {76DC3973-F812-4F49-9133-7248018BB9A0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.Common", "UI Layer\SmartPresenter.UI.Common\SmartPresenter.UI.Common.csproj", "{0A85AF46-EA21-4758-83B6-C426A186DBA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Common", "Database Layer\SmartPresenter.DO.Common\SmartPresenter.Data.Common.csproj", "{7C7E403C-864E-4CCC-BC88-D30762A28D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.RenderEngine(WPF)", "UI Layer\SmartPresenter.UI.RenderEngine(WPF)\SmartPresenter.UI.RenderEngine(WPF).csproj", "{51F446F1-E91E-4A0E-A29A-D773329B0EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Media", "Business Layer\SmartPresenter.BO.Media\SmartPresenter.BO.Media.csproj", "{369A9809-A949-42D0-914D-21D923FC424A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.Controls", "UI Layer\SmartPresenter.UI.Controls\SmartPresenter.UI.Controls.csproj", "{64DAE1C6-729E-4F03-9B1B-22BE57A68017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Common.Test", "Test\SmartPresenter.BO.Common.Test\SmartPresenter.BO.Common.Test.csproj", "{160AD8CF-8517-4D1F-B3F0-488DEBDBF034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Media.Test", "Test\SmartPresenter.BO.Media.Test\SmartPresenter.BO.Media.Test.csproj", "{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Common.Test", "Test\SmartPresenter.Common.Test\SmartPresenter.Common.Test.csproj", "{F18AA191-3D4A-4E4B-AAAD-E513888AC296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.Controls.Test", "Test\SmartPresenter.UI.Controls.Test\SmartPresenter.UI.Controls.Test.csproj", "{95487950-EEC4-4541-9134-F7AB29113766}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Media.Test.Console", "Test\SmartPresenter.BO.Media.Test.Console\SmartPresenter.BO.Media.Test.Console.csproj", "{B3A0A6AC-4788-4C68-AE99-96A3507C80DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.Social", "Business Layer\SmartPresenter.BO.Social\SmartPresenter.BO.Social.csproj", "{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.MediaManagement.Test", "Test\SmartPresenter.Service.MediaManagement.Test\SmartPresenter.Service.MediaManagement.Test.csproj", "{FBE1D02D-B2C8-446D-B4BA-2652AA052A05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.LocalSyncService", "Service Layer\Cloud\Sync\SmartPresenter.Service.CloudSync\SmartPresenter.Service.LocalSyncService.csproj", "{76DC3973-F812-4F49-9133-7248018BB9A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7} = {99A3B3B7-7F90-449C-87F1-C79AB838BFC7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.BlackBox", "Service Layer\BlackBox\SmartPresenter.Service.BlackBox\SmartPresenter.Service.BlackBox.csproj", "{C6C38D96-56D8-4D56-A60F-88A1F7934169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.LicenseCloud", "Service Layer\License\Cloud\SmartPresenter.Service.LicenseCloud\SmartPresenter.Service.LicenseCloud.csproj", "{C3B01A32-F433-4F91-B180-DCA434605E41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.LicenseLocal", "Service Layer\License\Local\SmartPresenter.Service.LicenseLocal\SmartPresenter.Service.LicenseLocal.csproj", "{037DC703-10BC-4735-8AD5-1BC986F47020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.BO.UndoRedo", "Business Layer\SmartPresenter.BO.UndoRedo\SmartPresenter.BO.UndoRedo.csproj", "{72A8D743-1881-403E-BDFA-71C468EEB84B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.Web", "UI Layer\SmartPresenter.UI.Web\SmartPresenter.UI.Web.csproj", "{B620809F-F7D7-4975-AAAF-21CA18AD7638}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7} = {99A3B3B7-7F90-449C-87F1-C79AB838BFC7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.Mobile", "Service Layer\Mobile\SmartPresenter.Service.Mobile\SmartPresenter.Service.Mobile.csproj", "{A929D6B7-523D-43B3-97A8-DE4319986328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.CloudSyncService", "Service Layer\Cloud\Sync\SmartPresenter.Service.CloudSyncService\SmartPresenter.Service.CloudSyncService.csproj", "{99A3B3B7-7F90-449C-87F1-C79AB838BFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.UI.RenderEngine(DirectX)", "UI Layer\SmartPresenter.UI.RenderEngine(DirectX)\SmartPresenter.UI.RenderEngine(DirectX).csproj", "{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Services.Test", "Test\SmartPresenter.Services.Test\SmartPresenter.Services.Test.csproj", "{38D3D338-AF91-4233-BB9A-13CAB195116A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7} = {99A3B3B7-7F90-449C-87F1-C79AB838BFC7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Service.MediaManagement", "Service Layer\MediaManagement\SmartPresenter.Service.MediaManagement\SmartPresenter.Service.MediaManagement.csproj", "{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Common.Test", "Test\SmartPresenter.Data.Common.Test\SmartPresenter.Data.Common.Test.csproj", "{2BE1EE09-70AE-4A0F-8A44-51630B17AC95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Entities", "Database Layer\SmartPresenter.Data.Entities\SmartPresenter.Data.Entities.csproj", "{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E5BA9B0-55A6-4256-A318-4D6540FB67DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5BA9B0-55A6-4256-A318-4D6540FB67DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5BA9B0-55A6-4256-A318-4D6540FB67DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5BA9B0-55A6-4256-A318-4D6540FB67DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A85AF46-EA21-4758-83B6-C426A186DBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A85AF46-EA21-4758-83B6-C426A186DBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A85AF46-EA21-4758-83B6-C426A186DBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A85AF46-EA21-4758-83B6-C426A186DBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7E403C-864E-4CCC-BC88-D30762A28D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7E403C-864E-4CCC-BC88-D30762A28D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7E403C-864E-4CCC-BC88-D30762A28D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7E403C-864E-4CCC-BC88-D30762A28D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F446F1-E91E-4A0E-A29A-D773329B0EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F446F1-E91E-4A0E-A29A-D773329B0EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F446F1-E91E-4A0E-A29A-D773329B0EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F446F1-E91E-4A0E-A29A-D773329B0EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369A9809-A949-42D0-914D-21D923FC424A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369A9809-A949-42D0-914D-21D923FC424A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369A9809-A949-42D0-914D-21D923FC424A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369A9809-A949-42D0-914D-21D923FC424A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DAE1C6-729E-4F03-9B1B-22BE57A68017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DAE1C6-729E-4F03-9B1B-22BE57A68017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DAE1C6-729E-4F03-9B1B-22BE57A68017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DAE1C6-729E-4F03-9B1B-22BE57A68017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160AD8CF-8517-4D1F-B3F0-488DEBDBF034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160AD8CF-8517-4D1F-B3F0-488DEBDBF034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160AD8CF-8517-4D1F-B3F0-488DEBDBF034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160AD8CF-8517-4D1F-B3F0-488DEBDBF034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F18AA191-3D4A-4E4B-AAAD-E513888AC296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F18AA191-3D4A-4E4B-AAAD-E513888AC296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18AA191-3D4A-4E4B-AAAD-E513888AC296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F18AA191-3D4A-4E4B-AAAD-E513888AC296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95487950-EEC4-4541-9134-F7AB29113766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95487950-EEC4-4541-9134-F7AB29113766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95487950-EEC4-4541-9134-F7AB29113766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95487950-EEC4-4541-9134-F7AB29113766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A0A6AC-4788-4C68-AE99-96A3507C80DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A0A6AC-4788-4C68-AE99-96A3507C80DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A0A6AC-4788-4C68-AE99-96A3507C80DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A0A6AC-4788-4C68-AE99-96A3507C80DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE1D02D-B2C8-446D-B4BA-2652AA052A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE1D02D-B2C8-446D-B4BA-2652AA052A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE1D02D-B2C8-446D-B4BA-2652AA052A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE1D02D-B2C8-446D-B4BA-2652AA052A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76DC3973-F812-4F49-9133-7248018BB9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76DC3973-F812-4F49-9133-7248018BB9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76DC3973-F812-4F49-9133-7248018BB9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76DC3973-F812-4F49-9133-7248018BB9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C38D96-56D8-4D56-A60F-88A1F7934169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C38D96-56D8-4D56-A60F-88A1F7934169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C38D96-56D8-4D56-A60F-88A1F7934169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C38D96-56D8-4D56-A60F-88A1F7934169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B01A32-F433-4F91-B180-DCA434605E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B01A32-F433-4F91-B180-DCA434605E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B01A32-F433-4F91-B180-DCA434605E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B01A32-F433-4F91-B180-DCA434605E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{037DC703-10BC-4735-8AD5-1BC986F47020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037DC703-10BC-4735-8AD5-1BC986F47020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037DC703-10BC-4735-8AD5-1BC986F47020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037DC703-10BC-4735-8AD5-1BC986F47020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A8D743-1881-403E-BDFA-71C468EEB84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A8D743-1881-403E-BDFA-71C468EEB84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A8D743-1881-403E-BDFA-71C468EEB84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A8D743-1881-403E-BDFA-71C468EEB84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B620809F-F7D7-4975-AAAF-21CA18AD7638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B620809F-F7D7-4975-AAAF-21CA18AD7638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B620809F-F7D7-4975-AAAF-21CA18AD7638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B620809F-F7D7-4975-AAAF-21CA18AD7638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A929D6B7-523D-43B3-97A8-DE4319986328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A929D6B7-523D-43B3-97A8-DE4319986328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A929D6B7-523D-43B3-97A8-DE4319986328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A929D6B7-523D-43B3-97A8-DE4319986328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D3D338-AF91-4233-BB9A-13CAB195116A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D3D338-AF91-4233-BB9A-13CAB195116A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D3D338-AF91-4233-BB9A-13CAB195116A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D3D338-AF91-4233-BB9A-13CAB195116A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4CE5D6F-7C08-4977-9248-B993E52076D5} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{66B21F37-8CAE-4264-B774-60AB4801E90B} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{7DA0D9F9-CCBB-413C-968B-4D18C5B689D1} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{D4567401-8A29-44E9-A82E-0910DEED13BE} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{913A43EB-C370-4689-8069-7F4C19763B71} = {8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}
+		{61C64E59-3C17-4088-AB8E-FEA209F7E996} = {940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}
+		{2186A18C-B84D-41CB-9934-C30B1CFD03CF} = {8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}
+		{53499664-D718-4646-BF84-3C17ED93D583} = {2186A18C-B84D-41CB-9934-C30B1CFD03CF}
+		{B3A46FB8-255D-4A07-B81F-E9EC1A8BB3C1} = {8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}
+		{0E3C61A2-2904-4497-8B3C-E6BE2847E954} = {8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}
+		{06BD5775-D447-4397-81BC-F4EE27913CDE} = {8CE06EFF-8F97-4728-A3A5-3DEAF5DACACB}
+		{D0AB2D30-3764-424F-BE3B-F6F3BE060FB3} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{0E5BA9B0-55A6-4256-A318-4D6540FB67DD} = {7DA0D9F9-CCBB-413C-968B-4D18C5B689D1}
+		{3CD27266-A8C2-4D16-8EFE-410D33C9B5D7} = {B4CE5D6F-7C08-4977-9248-B993E52076D5}
+		{0A85AF46-EA21-4758-83B6-C426A186DBA4} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{7C7E403C-864E-4CCC-BC88-D30762A28D13} = {66B21F37-8CAE-4264-B774-60AB4801E90B}
+		{51F446F1-E91E-4A0E-A29A-D773329B0EA6} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{369A9809-A949-42D0-914D-21D923FC424A} = {B4CE5D6F-7C08-4977-9248-B993E52076D5}
+		{64DAE1C6-729E-4F03-9B1B-22BE57A68017} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{160AD8CF-8517-4D1F-B3F0-488DEBDBF034} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{9ADAFF73-0624-4D7C-A8AF-501B24B9DB2E} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{F18AA191-3D4A-4E4B-AAAD-E513888AC296} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{95487950-EEC4-4541-9134-F7AB29113766} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{B3A0A6AC-4788-4C68-AE99-96A3507C80DC} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{D97C3CC1-5FB2-4CA4-821C-B0F269D58811} = {B4CE5D6F-7C08-4977-9248-B993E52076D5}
+		{FBE1D02D-B2C8-446D-B4BA-2652AA052A05} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{76DC3973-F812-4F49-9133-7248018BB9A0} = {53499664-D718-4646-BF84-3C17ED93D583}
+		{C6C38D96-56D8-4D56-A60F-88A1F7934169} = {B3A46FB8-255D-4A07-B81F-E9EC1A8BB3C1}
+		{C3B01A32-F433-4F91-B180-DCA434605E41} = {0E3C61A2-2904-4497-8B3C-E6BE2847E954}
+		{037DC703-10BC-4735-8AD5-1BC986F47020} = {0E3C61A2-2904-4497-8B3C-E6BE2847E954}
+		{72A8D743-1881-403E-BDFA-71C468EEB84B} = {B4CE5D6F-7C08-4977-9248-B993E52076D5}
+		{B620809F-F7D7-4975-AAAF-21CA18AD7638} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{A929D6B7-523D-43B3-97A8-DE4319986328} = {06BD5775-D447-4397-81BC-F4EE27913CDE}
+		{99A3B3B7-7F90-449C-87F1-C79AB838BFC7} = {53499664-D718-4646-BF84-3C17ED93D583}
+		{FBBE7EF0-22FD-4528-A83F-E64C7A3B5B8C} = {8D4DF3D6-3FD4-45E9-9B02-E62B19E88EA6}
+		{38D3D338-AF91-4233-BB9A-13CAB195116A} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC} = {913A43EB-C370-4689-8069-7F4C19763B71}
+		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
+		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8} = {66B21F37-8CAE-4264-B774-60AB4801E90B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SmartPresenter.Service.LocalSync" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SmartPresenter.Service.LocalSync" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="SyncFileType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Presentation" />
+      <xs:enumeration value="Image" />
+      <xs:enumeration value="Video" />
+      <xs:enumeration value="Audio" />
+      <xs:enumeration value="Setting" />
+      <xs:enumeration value="Xml" />
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="Playlist" />
+      <xs:enumeration value="Library" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SyncFileType" nillable="true" type="tns:SyncFileType" />
+</xs:schema>

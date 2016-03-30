@@ -1,0 +1,42 @@
+﻿
+namespace SmartPresenter.BO.Common.Enums
+{
+    public enum TransitionTypes
+    {
+        None,
+        Cut,
+        Fade,
+        Push,
+        Wipe,
+        Split,
+        Reveal,
+        RandomBars,
+        Shape,
+        Uncover,
+        Cover,
+        Flash,
+        Dissolve,
+        CheckerBoard,
+        Blinds,
+        Clock,
+        Ripple,
+        Honecomb,
+        Glitter,
+        Vortex,
+        Shred,
+        Switch,
+        Flip,
+        Gallery,
+        Cube,
+        Doors,
+        Box,
+        Zoom,
+        Pan,
+        FerrisWheel,
+        Conveyor,
+        Rotate,
+        Window,
+        Orbit,
+        FlyThrough
+    }
+}

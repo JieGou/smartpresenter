@@ -1,0 +1,274 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Controls.Slide.SlideEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+             xmlns:Windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+             xmlns:MediaEffects="clr-namespace:System.Windows.Media.Effects;assembly=PresentationCore"
+             xmlns:BOCommonEntities="clr-namespace:SmartPresenter.BO.Common.Entities;assembly=SmartPresenter.BO.Common"
+             xmlns:BOCommon="clr-namespace:SmartPresenter.BO.Common;assembly=SmartPresenter.BO.Common"
+             xmlns:PresentationCore="clr-namespace:System.Windows.Media;assembly=PresentationCore" 
+             xmlns:AvalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:Toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"            
+             xmlns:Interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Interactions="http://schemas.microsoft.com/expression/2010/interactions"  
+             xmlns:Local="clr-namespace:SmartPresenter.UI.Controls"
+             xmlns:CommonControls="clr-namespace:SmartPresenter.UI.Common.Controls;assembly=SmartPresenter.UI.Common"
+             xmlns:Resources="clr-namespace:SmartPresenter.UI.Controls.Resources"
+             xmlns:ViewModel="clr-namespace:SmartPresenter.UI.Controls.ViewModel"
+             xmlns:ColorBox="http://schemas.ncore.com/wpf/xaml/colorbox"
+             xmlns:prism="http://www.codeplex.com/prism"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartPresenter.UI.Controls;component/Slide/SlideEditorResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="SlideChildStyle" BasedOn="{StaticResource SlideChildStyleBase}">
+                <EventSetter Event="ListBoxItem.PreviewMouseDown" Handler="Shape_MouseDown"/>
+                <EventSetter Event="ListBoxItem.PreviewMouseMove" Handler="Shape_MouseMove"/>
+                <EventSetter Event="ListBoxItem.PreviewMouseUp" Handler="Shape_MouseUp"/>
+                <EventSetter Event="ListBoxItem.PreviewKeyDown" Handler="Shape_KeyDown"/>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <ViewModel:SlideEditorViewModel x:Name="ViewModel"/>
+    </UserControl.DataContext>
+
+    <Grid DataContext="{Binding SelectedSlide}">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.6*"/>
+            <ColumnDefinition Width="*" MinWidth="300" MaxWidth="400"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="editorListBox" Grid.Column="0" Margin="5 5 0 7" ItemsSource="{Binding Elements}"
+                 ItemsPanel="{StaticResource SlideChildrenPanelTemplate}" SelectionMode="Extended" 
+                 ItemContainerStyle="{StaticResource SlideChildStyle}" Loaded="ItemsControl_Loaded" 
+                 SelectedItem="{Binding DataContext.SelectedElement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}">
+            <Interactivity:Interaction.Triggers>
+                <Interactivity:EventTrigger EventName="SelectionChanged">
+                    <prism:InvokeCommandAction Command="{Binding DataContext.ShapeSelectionChangedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+                </Interactivity:EventTrigger>
+            </Interactivity:Interaction.Triggers>
+        </ListBox>
+        
+        <AvalonDock:DockingManager Grid.Column="1" Margin="7 5 5 5">
+            <AvalonDock:LayoutRoot>
+                <AvalonDock:LayoutPanel>
+                    <AvalonDock:LayoutAnchorablePane>
+                        <AvalonDock:LayoutAnchorable Title="Properties" CanHide="False" CanClose="False" CanAutoHide="True" AutoHideMinWidth="300">
+                            <Toolkit:PropertyGrid SelectedObject="{Binding DataContext.SelectedElement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}">
+                                <Toolkit:PropertyGrid.EditorDefinitions>
+                                    <!--Brush Data Template-->
+                                    <Toolkit:EditorTemplateDefinition>
+                                        <Toolkit:EditorTemplateDefinition.TargetProperties>
+                                            <Toolkit:TargetPropertyType Type="{x:Type Media:Brush}"/>
+                                        </Toolkit:EditorTemplateDefinition.TargetProperties>
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <ColorBox:ColorBox MinWidth="150" Brush="{Binding Value, Mode=TwoWay}"/>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                    <!--Thickness Data Template-->
+                                    <Toolkit:EditorTemplateDefinition>
+                                        <Toolkit:EditorTemplateDefinition.TargetProperties>
+                                            <Toolkit:TargetPropertyType Type="{x:Type Windows:Thickness}"/>
+                                        </Toolkit:EditorTemplateDefinition.TargetProperties>
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5" MinWidth="120">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition MaxWidth="50"/>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition MaxWidth="50"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Text="L:" Grid.Row="0" Grid.Column="0" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.Left}" Grid.Row="0" Grid.Column="1" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="T:" Grid.Row="0" Grid.Column="2" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.Top}" Grid.Row="0" Grid.Column="3" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="R:" Grid.Row="1" Grid.Column="0" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.Right}" Grid.Row="1" Grid.Column="1" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="B:" Grid.Row="1" Grid.Column="2" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.Bottom}" Grid.Row="1" Grid.Column="3" MinWidth="20" Margin="2 5"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                    <!--CornerRadius Data Template-->
+                                    <Toolkit:EditorTemplateDefinition>
+                                        <Toolkit:EditorTemplateDefinition.TargetProperties>
+                                            <Toolkit:TargetPropertyType Type="{x:Type Windows:CornerRadius}"/>
+                                        </Toolkit:EditorTemplateDefinition.TargetProperties>
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5" MinWidth="120">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition MaxWidth="50"/>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition MaxWidth="50"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Text="L:" Grid.Row="0" Grid.Column="0" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.TopLeft}" Grid.Row="0" Grid.Column="1" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="T:" Grid.Row="0" Grid.Column="2" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.TopRight}" Grid.Row="0" Grid.Column="3" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="R:" Grid.Row="1" Grid.Column="0" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.BottomLeft}" Grid.Row="1" Grid.Column="1" MinWidth="20" Margin="2 5"/>
+                                                        <TextBlock Text="B:" Grid.Row="1" Grid.Column="2" Margin="2 5"/>
+                                                        <TextBox Text="{Binding Value.BottomRight}" Grid.Row="1" Grid.Column="3" MinWidth="20" Margin="2 5"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                    <!--Transform Data Template-->
+                                    <Toolkit:EditorTemplateDefinition>
+                                        <Toolkit:EditorTemplateDefinition.TargetProperties>
+                                            <Toolkit:TargetPropertyType Type="{x:Type Media:Transform}"/>
+                                        </Toolkit:EditorTemplateDefinition.TargetProperties>
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Toolkit:DropDownButton Content="Edit..." HorizontalAlignment="Left" MinWidth="175">
+                                                    <Toolkit:DropDownButton.DropDownContent>
+                                                        <TabControl MinHeight="100">
+                                                            <TabItem Header="1" MinWidth="25" ToolTip="Translate">
+                                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                                    <TextBlock Text="X" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[0].X}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                    <TextBlock Text="Y" Margin="5"/>
+                                                                    <TextBox  Text="{Binding Value.Children[0].Y}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="2" MinWidth="25" ToolTip="Rotate">
+                                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                                    <TextBlock Text="Angle" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[1].Angle}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="3" MinWidth="25" ToolTip="Scale">
+                                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                                    <TextBlock Text="X" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[2].ScaleX}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                    <TextBlock Text="Y" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[2].ScaleY}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="4" MinWidth="25" ToolTip="Skew">
+                                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                                    <TextBlock Text="X" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[3].AngleX}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                    <TextBlock Text="Y" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.Children[3].AngleY}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="5" MinWidth="25" ToolTip="Center Point">
+                                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                                    <TextBlock Text="X" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.CenterX}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                    <TextBlock Text="Y" Margin="5"/>
+                                                                    <TextBox Text="{Binding Value.CenterY}" MinWidth="50" Margin="10 5" VerticalAlignment="Top"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                            <TabItem Header="6" MinWidth="25" ToolTip="Flip">
+                                                                <StackPanel Margin="5">
+                                                                    <CheckBox Content="Horizontal" Margin="2" IsChecked="{Binding Value.IsFlipHorizontal, Mode=TwoWay}"/>
+                                                                    <CheckBox Content="Vertical" Margin="2" IsChecked="{Binding Value.IsFlipVertical, Mode=TwoWay}"/>
+                                                                    <CheckBox Content="Both" Margin="2" IsChecked="{Binding Value.IsFlip, Mode=TwoWay}"/>
+                                                                </StackPanel>
+                                                            </TabItem>
+                                                        </TabControl>
+                                                    </Toolkit:DropDownButton.DropDownContent>
+                                                </Toolkit:DropDownButton>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                    <!--DropShadowEffect Data Template-->
+                                    <!--<Toolkit:EditorTemplateDefinition>
+                                        <Toolkit:EditorTemplateDefinition.TargetProperties>
+                                            <Toolkit:TargetPropertyType Type="{x:Type MediaEffects:DropShadowEffect}"/>
+                                        </Toolkit:EditorTemplateDefinition.TargetProperties>
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5" MinWidth="175">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition MaxWidth="80"/>
+                                                            <ColumnDefinition/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Text="Color" Grid.Row="0" Grid.Column="0" Margin="2"/>
+                                                        <Toolkit:ColorPicker SelectedColor="{Binding Color, Mode=TwoWay}"  Grid.Row="0" Grid.Column="1" Margin="2"/>
+                                                        <TextBlock Text="Direction" Grid.Row="1" Grid.Column="0" Margin="2"/>
+                                                        <TextBox Text="{Binding Direction, Mode=TwoWay}"  Grid.Row="1" Grid.Column="1" Margin="2"/>
+                                                        <TextBlock Text="Opacity" Grid.Row="2" Grid.Column="0" Margin="2"/>
+                                                        <TextBox Text="{Binding Opacity, Mode=TwoWay}"  Grid.Row="2" Grid.Column="1" Margin="2"/>
+                                                        <TextBlock Text="ShadowDepth" Grid.Row="3" Grid.Column="0" Margin="2"/>
+                                                        <TextBox Text="{Binding ShadowDepth, Mode=TwoWay}"  Grid.Row="3" Grid.Column="1" Margin="2"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>-->
+                                    <Toolkit:EditorTemplateDefinition TargetProperties="IsMuted,IsPlaying">
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Ellipse x:Name="circle" Width="15" Height="15" Fill="Red" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Left" Margin="2 1"/>
+                                                <DataTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="True">
+                                                        <Setter TargetName="circle" Property="Fill" Value="Green"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="True">
+                                                        <Setter TargetName="circle" Property="Fill" Value="Green"/>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                    <!--Opacity Data Template-->
+                                    <Toolkit:EditorTemplateDefinition TargetProperties="Opacity">
+                                        <Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                            <DataTemplate>
+                                                <Slider Minimum="0" Maximum="1" Value="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </DataTemplate>
+                                        </Toolkit:EditorTemplateDefinition.EditingTemplate>
+                                    </Toolkit:EditorTemplateDefinition>
+                                </Toolkit:PropertyGrid.EditorDefinitions>
+                            </Toolkit:PropertyGrid>
+                            <!--<CommonControls:PropertyGrid SelectedItem="{Binding DataContext.SelectedElement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>-->
+                        </AvalonDock:LayoutAnchorable>
+                    </AvalonDock:LayoutAnchorablePane>
+                </AvalonDock:LayoutPanel>
+            </AvalonDock:LayoutRoot>
+        </AvalonDock:DockingManager>
+        
+        <GridSplitter Grid.Column="1" Width="5" Background="Gray" HorizontalAlignment="Left" Margin="1 5 0 7"/>
+        
+    </Grid>
+
+</UserControl>

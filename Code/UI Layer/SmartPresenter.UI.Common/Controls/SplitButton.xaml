@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="SmartPresenter.UI.Common.SplitButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="SplitButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                CornerRadius="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"
+                                        MaxWidth="30"
+                                        BorderBrush="{TemplateBinding Background}"
+                                        Command="{Binding Command}"
+                                        CommandParameter="{Binding CommandParameter}">
+                                    <Grid>
+                                        <Path HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              Data="M52,190 L52,200.5"
+                                              Fill="{x:Null}"
+                                              Stretch="Fill"
+                                              Stroke="#FF000000"
+                                              StrokeThickness="2" />
+                                        <Path HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              Data="M134.75,171.75 L161,171.75"
+                                              Fill="{x:Null}"
+                                              Stretch="Fill"
+                                              Stroke="#FF000000"
+                                              StrokeThickness="2" />
+                                    </Grid>
+                                </Button>
+                                <Button x:Name="dropDown"
+                                        Grid.Column="1"
+                                        BorderBrush="{TemplateBinding Background}"
+                                        Click="DropDown_Click"
+                                        ContextMenu="{Binding Path=ContextMenu,
+                                                              RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                             AncestorType=UserControl}}"
+                                        Tag="{Binding Path=Tag,
+                                                      RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                     AncestorType=UserControl}}">
+                                    <Path VerticalAlignment="Center"
+                                          Data="M 0 0 L 4 5 L 8 0 Z"
+                                          Fill="Black"
+                                          StrokeThickness="0" />
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=ContextMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="{x:Null}">
+                                <Setter TargetName="dropDown" Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Button MaxWidth="42"
+            MaxHeight="25"
+            Style="{StaticResource SplitButton}" />
+</UserControl>

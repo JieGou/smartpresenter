@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D97C3CC1-5FB2-4CA4-821C-B0F269D58811}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartPresenter.BO.Social</RootNamespace>
+    <AssemblyName>SmartPresenter.BO.Social</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SmartPresenterSigningKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\..\..\Libraries\Social\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Facebook\FacebookKeyStrings.cs" />
+    <Compile Include="Facebook\FacebookManager.cs" />
+    <Compile Include="Facebook\JSON\CommonJSON.cs" />
+    <Compile Include="Facebook\JSON\Container.cs" />
+    <Compile Include="Facebook\JSON\FacebookActivityJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookAlbumJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookBookJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookCityJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookClassJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookCommentJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookConcentrationJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookDegreeJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookEmployerJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookFamilyMemberJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookFriendListJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookGroupJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookKeyStrings.cs" />
+    <Compile Include="Facebook\JSON\FacebookLanguageJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookLocationJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookMovieJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookMusicJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookNoteJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookPageJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookPersonJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookPhotoJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookSchoolJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookSportJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookTagJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookTelevisionShowJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookUserJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookUserLikeJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookVideoFormat.cs" />
+    <Compile Include="Facebook\JSON\FacebookVideoJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookWorkJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookWork_PositionJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookWork_ProjectJSON.cs" />
+    <Compile Include="Facebook\JSON\FacebookYearJSON.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Google+\" />
+    <Folder Include="Instagram\" />
+    <Folder Include="Pinterest\" />
+    <Folder Include="Twitter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SmartPresenterSigningKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartPresenter.BO.Common\SmartPresenter.BO.Common.csproj">
+      <Project>{3cd27266-a8c2-4d16-8efe-410d33c9b5d7}</Project>
+      <Name>SmartPresenter.BO.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64DAE1C6-729E-4F03-9B1B-22BE57A68017}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartPresenter.UI.Controls</RootNamespace>
+    <AssemblyName>SmartPresenter.UI.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SmartPresenterSigningKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ColorBox">
+      <HintPath>..\..\..\Libraries\ColorBox.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=ce56c8006386e5de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Composition, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.PubSubEvents, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Prism\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\..\Libraries\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTemplateSelectors\PlaylistDataTemplateSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DocumentContainer.xaml.cs">
+      <DependentUpon>DocumentContainer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DocumentTabs\LibraryTab.xaml.cs">
+      <DependentUpon>LibraryTab.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DocumentTabs\OutlineTab.xaml.cs">
+      <DependentUpon>OutlineTab.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DocumentTabs\SlidesTab.xaml.cs">
+      <DependentUpon>SlidesTab.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\FontFamilyUpdatedEvent.cs" />
+    <Compile Include="Events\FontItalicAppliedEvent.cs" />
+    <Compile Include="Events\FontSizeDecreasedEvent.cs" />
+    <Compile Include="Events\FontSizeIncreasedEvent.cs" />
+    <Compile Include="Events\FontSizeUpdatedEvent.cs" />
+    <Compile Include="Events\FontStrikeoutEvent.cs" />
+    <Compile Include="Events\FontUnderlineAppliedEvent.cs" />
+    <Compile Include="Events\HotKeyUpdatedEvent.cs" />
+    <Compile Include="Events\InsertObjectInEditorEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\MediaViewerItemsAskedEvent.cs" />
+    <Compile Include="Events\MediaViewerItemsUpdatedEvent.cs" />
+    <Compile Include="Events\NextSlideTimerUpdatedEvent.cs" />
+    <Compile Include="Events\OverlayAddedEvent.cs" />
+    <Compile Include="Events\SelectedPresentationAskedEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\SelectedPresentationChangedEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\SelectedSlideAskedEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\SelectedSlideChangedEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\FontBoldAppliedEvent.cs" />
+    <Compile Include="Events\SelectedTextColorChangedEvent.cs" />
+    <Compile Include="Events\TextAlignmentChangedEvent.cs" />
+    <Compile Include="Events\TextCaseChangedEvent.cs" />
+    <Compile Include="Events\TransitionDataChangedEvent.cs" />
+    <Compile Include="Events\VerticalTextAlignmentChangedEvent.cs" />
+    <Compile Include="Media\ImageEditorView.xaml.cs">
+      <DependentUpon>ImageEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Media\MediaViewer.xaml.cs">
+      <DependentUpon>MediaViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Media\MediaViewerSidePanel.xaml.cs">
+      <DependentUpon>MediaViewerSidePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Media\TimeSpanTickBar.cs" />
+    <Compile Include="Media\VideoEditorTimeline.xaml.cs">
+      <DependentUpon>VideoEditorTimeline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Media\VideoEditorView.xaml.cs">
+      <DependentUpon>VideoEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\AdvancedSettingsView.xaml.cs">
+      <DependentUpon>AdvancedSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\DisplaySettingsView.xaml.cs">
+      <DependentUpon>DisplaySettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\GeneralSettingsView.xaml.cs">
+      <DependentUpon>GeneralSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\NetworkSettingsView.xaml.cs">
+      <DependentUpon>NetworkSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\HotKeyPopup.xaml.cs">
+      <DependentUpon>HotKeyPopup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Popups\NextSlideTimerPopup.xaml.cs">
+      <DependentUpon>NextSlideTimerPopup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Popups\QuickEditPopup.xaml.cs">
+      <DependentUpon>QuickEditPopup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources\LibraryTabResources.Designer.cs">
+      <DependentUpon>LibraryTabResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Resources\RibbonControlResources.Designer.cs">
+      <DependentUpon>RibbonControlResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="RibbonControl.xaml.cs">
+      <DependentUpon>RibbonControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\SocialSettingsView.xaml.cs">
+      <DependentUpon>SocialSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SyncSettingsView.xaml.cs">
+      <DependentUpon>SyncSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SlideShow\SlideShowManager.cs" />
+    <Compile Include="Slide\SlideEditor.xaml.cs">
+      <DependentUpon>SlideEditor.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Slide\SlideViewer.xaml.cs">
+      <DependentUpon>SlideViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\DocumentContainerTabs\LibraryTabViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\DocumentContainerTabs\SlidesTabViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\AudioView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\CircleView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\EllipseView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\ImageView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\LibraryView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\MediaView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\PlaylistGroupView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\PlaylistView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\PolygonView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\PresentationView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\RectangleView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\ShapeView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\SlideView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\SquareView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\TextView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\TriangleView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Entities\VideoView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\MediaViewerViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Media\MediaViewerSidePanelViewModel.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorOverlay\VideoEditorAudioOverlayItem.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorOverlay\VideoEditorImageOverlayItem.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorOverlay\VideoEditorOverlayItem.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorOverlay\VideoEditorTextOverlayItem.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorOverlay\VideoEditorVideoOverlayItem.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorTimelineViewModel.cs" />
+    <Compile Include="ViewModel\Media\VideoEditorViewModel.cs" />
+    <Compile Include="ViewModel\Popups\HotKeyPopupViewModel.cs" />
+    <Compile Include="ViewModel\Popups\NextSlideTimerPopupViewModel.cs" />
+    <Compile Include="ViewModel\RibbonControlViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\RibbonTabs\HomeTabViewModel.cs" />
+    <Compile Include="ViewModel\RibbonTabs\SlideShowTabViewModel.cs" />
+    <Compile Include="ViewModel\RibbonTabs\TransitionsTabViewModel.cs" />
+    <Compile Include="ViewModel\Settings\SyncSettingsViewModel.cs" />
+    <Compile Include="ViewModel\SlideEditorViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\SlideViewerViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\Social\FacebookOptionsViewModel.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LibraryTabResources.es.resx" />
+    <EmbeddedResource Include="Resources\LibraryTabResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LibraryTabResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RibbonControlResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RibbonControlResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="SmartPresenterSigningKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business Layer\SmartPresenter.BO.Common\SmartPresenter.BO.Common.csproj">
+      <Project>{3cd27266-a8c2-4d16-8efe-410d33c9b5d7}</Project>
+      <Name>SmartPresenter.BO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business Layer\SmartPresenter.BO.Media\SmartPresenter.BO.Media.csproj">
+      <Project>{369a9809-a949-42d0-914d-21d923fc424a}</Project>
+      <Name>SmartPresenter.BO.Media</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business Layer\SmartPresenter.BO.Social\SmartPresenter.BO.Social.csproj">
+      <Project>{d97c3cc1-5fb2-4ca4-821c-b0f269d58811}</Project>
+      <Name>SmartPresenter.BO.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business Layer\SmartPresenter.BO.UndoRedo\SmartPresenter.BO.UndoRedo.csproj">
+      <Project>{72a8d743-1881-403e-bdfa-71c468eeb84b}</Project>
+      <Name>SmartPresenter.BO.UndoRedo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\SmartPresenter.Common\SmartPresenter.Common.csproj">
+      <Project>{0e5ba9b0-55a6-4256-a318-4d6540fb67dd}</Project>
+      <Name>SmartPresenter.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartPresenter.UI.Common\SmartPresenter.UI.Common.csproj">
+      <Project>{0a85af46-ea21-4758-83b6-c426a186dba4}</Project>
+      <Name>SmartPresenter.UI.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DocumentContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentTabs\LibraryTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentTabs\LibraryTabResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentTabs\OutlineTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentTabs\SlidesTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentTabs\SlidesTabResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\ImageEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\MediaViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\MediaViewerResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\MediaViewerSidePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\VideoEditorTimeline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\VideoEditorTimelineResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\VideoEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Media\VideoEditorViewResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\TransitionsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\AdvancedSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\DisplaySettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\GeneralSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\NetworkSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\HotKeyPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\NextSlideTimerPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popups\QuickEditPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\SlideShowTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SocialSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SyncSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CommonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\CommonRibbonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\DesignTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\HomeTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\InsertTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RibbonTabs\RibbonMenus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Slide\SlideEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Slide\SlideEditorResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Slide\SlideViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Slide\SlideViewerResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LibraryPlaylist\Library.png" />
+    <Resource Include="Images\LibraryPlaylist\Playlist.png" />
+    <Resource Include="Images\LibraryPlaylist\PlaylistGroup.png" />
+    <Resource Include="Images\LibraryPlaylist\Presentation.png" />
+    <Resource Include="Images\Ribbon\AlignBottom.png" />
+    <Resource Include="Images\Ribbon\AlignCenter.png" />
+    <Resource Include="Images\Ribbon\AlignLeft.png" />
+    <Resource Include="Images\Ribbon\AlignMiddle.png" />
+    <Resource Include="Images\Ribbon\AlignRight.png" />
+    <Resource Include="Images\Ribbon\AlignTop.png" />
+    <Resource Include="Images\Ribbon\Align_Text_Center.png" />
+    <Resource Include="Images\Ribbon\Align_Text_Justify.png" />
+    <Resource Include="Images\Ribbon\Align_Text_Left.png" />
+    <Resource Include="Images\Ribbon\Align_Text_Right.png" />
+    <Resource Include="Images\Ribbon\Bold.png" />
+    <Resource Include="Images\Ribbon\BringForward.png" />
+    <Resource Include="Images\Ribbon\BringToFront.png" />
+    <Resource Include="Images\Ribbon\Bullets.png" />
+    <Resource Include="Images\Ribbon\ChangeCase.jpg" />
+    <Resource Include="Images\Ribbon\Character_Spacing.png" />
+    <Resource Include="Images\Ribbon\Chart.png" />
+    <Resource Include="Images\Ribbon\Collapse.png" />
+    <Resource Include="Images\Ribbon\Copy.png" />
+    <Resource Include="Images\Ribbon\Cut.png" />
+    <Resource Include="Images\Ribbon\DecreaseFont.jpg" />
+    <Resource Include="Images\Ribbon\Find.png" />
+    <Resource Include="Images\Ribbon\FlipHorizontal.png" />
+    <Resource Include="Images\Ribbon\FlipVertical.png" />
+    <Resource Include="Images\Ribbon\FormatPainter.jpg" />
+    <Resource Include="Images\Ribbon\GridSettings.png" />
+    <Resource Include="Images\Ribbon\Help.png" />
+    <Resource Include="Images\Ribbon\IncreaseFont.jpg" />
+    <Resource Include="Images\Ribbon\Italic.png" />
+    <Resource Include="Images\Ribbon\Layout.png" />
+    <Resource Include="Images\Ribbon\Numbered.png" />
+    <Resource Include="Images\Ribbon\Options.png" />
+    <Resource Include="Images\Ribbon\Paste.png" />
+    <Resource Include="Images\Ribbon\Paste_Duplicate.jpg" />
+    <Resource Include="Images\Ribbon\Paste_Formatting.jpg" />
+    <Resource Include="Images\Ribbon\Paste_Hyperlink.jpg" />
+    <Resource Include="Images\Ribbon\Paste_Special.jpg" />
+    <Resource Include="Images\Ribbon\Redo.png" />
+    <Resource Include="Images\Ribbon\RotateLeft.png" />
+    <Resource Include="Images\Ribbon\RotateRight.png" />
+    <Resource Include="Images\Ribbon\Save.png" />
+    <Resource Include="Images\Ribbon\SendBackward.png" />
+    <Resource Include="Images\Ribbon\SendToBack.png" />
+    <Resource Include="Images\Ribbon\Shadow.jpg" />
+    <Resource Include="Images\Ribbon\ShapeFill.png" />
+    <Resource Include="Images\Ribbon\Strikethrough.png" />
+    <Resource Include="Images\Ribbon\Text_Columns.png" />
+    <Resource Include="Images\Ribbon\Underline.png" />
+    <Resource Include="Images\Ribbon\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ribbon\Ribbon_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Social\Facebook\" />
+    <Folder Include="Social\Google+\" />
+    <Folder Include="Social\Instagram\" />
+    <Folder Include="Social\Pinterest\" />
+    <Folder Include="Social\Twitter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Social\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Social\googleplus.png" />
+    <Resource Include="Images\Social\instagram.png" />
+    <Resource Include="Images\Social\pinterest.png" />
+    <Resource Include="Images\Social\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Slide\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Slide\looptofirst.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

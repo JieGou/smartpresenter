@@ -61,8 +61,6 @@
   <ItemGroup>
     <Compile Include="LocalDBUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\PresentationRepositoryTest.cs" />
-    <Compile Include="Repositories\PresentationUnitOfWorkTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\SmartPresenter.Common\SmartPresenter.Common.csproj">
@@ -80,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SmartPresenterSigningKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

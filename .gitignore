@@ -4,3 +4,33 @@
 
 /Code/Database/SmartPresenterCloudDB_log.ldf
 /Code/Database/SmartPresenterCloudDB.mdf
+/Build
+/Code/Business Layer/SmartPresenter.BO.UndoRedo/obj/Debug
+/Code/Business Layer/SmartPresenter.BO.Social/obj/Debug
+/Code/Business Layer/SmartPresenter.BO.Media/obj/Debug
+/Code/Business Layer/SmartPresenter.BO.Common/obj/Debug
+/Code/Common/SmartPresenter.Common/obj/Debug
+/Code/Database Layer/SmartPresenter.Data.Entities/obj/Debug
+/Code/Database Layer/SmartPresenter.DO.Common/obj/Debug
+/Code/Service Layer/BlackBox/SmartPresenter.Service.BlackBox/obj/Debug
+/Code/Service Layer/Cloud/Sync/SmartPresenter.Service.CloudSyncService/obj/Debug
+/Code/Service Layer/Cloud/Sync/SmartPresenter.Service.CloudSync/obj/Debug
+/Code/Service Layer/License/Cloud/SmartPresenter.Service.LicenseCloud/obj/Debug
+/Code/Service Layer/License/Local/SmartPresenter.Service.LicenseLocal/obj/Debug
+/Code/Service Layer/Mobile/SmartPresenter.Service.Mobile/obj/Debug
+/Code/Service Layer/MediaManagement/SmartPresenter.Service.MediaManagement/obj/Debug
+/Code/Test/SmartPresenter.BO.Common.Test/obj/Debug
+/Code/Test/SmartPresenter.BO.Media.Test/obj/Debug
+/Code/Test/SmartPresenter.BO.Media.Test.Console/obj/Debug
+/Code/Test/SmartPresenter.Common.Test/obj/Debug
+/Code/Test/SmartPresenter.Data.Common.Test/obj/Debug
+/Code/Test/SmartPresenter.Service.MediaManagement.Test/obj/Debug
+/Code/Test/SmartPresenter.Services.Test/bin/Debug
+/Code/Test/SmartPresenter.Services.Test/obj/Debug
+/Code/Test/SmartPresenter.UI.Controls.Test/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.Common/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.Controls/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.Main/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.RenderEngine(DirectX)/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.RenderEngine(WPF)/obj/Debug
+/Code/UI Layer/SmartPresenter.UI.Web/obj/Debug

@@ -229,32 +229,32 @@ namespace SmartPresenter.Data.Entities
             }
             if (reader.Name.Equals("Elements"))
             {
-                //DefaultShapeFactory shapeFactory = new DefaultShapeFactory();
-                //ShapeDTO shape =  null;
-                //while (slidesReader.IsEmptyElement == false && slidesReader.Read() && reader.Name.Equals("Elements") == false)
-                //{
-                //    switch (slidesReader.Name)
-                //    {
-                //        case "Rectangle":
-                //        case "Square":
-                //        case "Circle":
-                //        case "Ellipse":
-                //        case "Text":
-                //        case "Image":
-                //        case "Audio":
-                //        case "Video":
-                //            shape = shapeFactory.CreateElement(slidesReader.Name);
-                //            break;
-                //        default:
-                //            slidesReader.Skip();
-                //            break;
-                //    }
-                //    if (shape != null)
-                //    {
-                //        shape.ReadXml(slidesReader);
-                //        elements.Add(shape);
-                //    }
-                //}
+                DefaultShapeFactory shapeFactory = new DefaultShapeFactory();
+                ShapeDTO shape = null;
+                while (slidesReader.IsEmptyElement == false && slidesReader.Read() && reader.Name.Equals("Elements") == false)
+                {
+                    switch (slidesReader.Name)
+                    {
+                        case "Rectangle":
+                        case "Square":
+                        case "Circle":
+                        case "Ellipse":
+                        case "Text":
+                        case "Image":
+                        case "Audio":
+                        case "Video":
+                            shape = shapeFactory.CreateElement(slidesReader.Name);
+                            break;
+                        default:
+                            slidesReader.Skip();
+                            break;
+                    }
+                    if (shape != null)
+                    {
+                        shape.ReadXml(slidesReader);
+                        elements.Add(shape);
+                    }
+                }
             }
 
             return elements;

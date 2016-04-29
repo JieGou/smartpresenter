@@ -10,7 +10,7 @@ namespace SmartPresenter.Data.Entities
     /// <summary>
     /// class for creating shape factories
     /// </summary>
-    internal class DefaultShapeFactor
+    internal class DefaultShapeFactory
     {
         #region Method
 
@@ -19,40 +19,75 @@ namespace SmartPresenter.Data.Entities
         /// </summary>
         /// <param name="elementType">Type of the element.</param>
         /// <returns></returns>
-        public ShapeDTO CreateShape(ElementType elementType)
+        public ShapeDTO CreateElement(string elementType)
         {
             switch(elementType)
             {
-                case ElementType.Audio:
+                case "Audio":
                     return new AudioDTO();                    
-                case ElementType.Circle:
+                case "Circle":
                     return new CircleDTO();                    
-                case ElementType.DVD:
+                case "DVD":
                     return new DVDDTO();                    
-                case ElementType.Ellipse:
+                case "Ellipse":
                     return new EllipseDTO();                    
-                case ElementType.Image:
+                case "Image":
                     return new ImageDTO();                    
-                case ElementType.LiveVideo:
+                case "LiveVideo":
                     return new LiveVideoDTO();                                    
-                case ElementType.Polygon:
+                case "Polygon":
                     return new PolygonDTO();                    
-                case ElementType.Rectangle:
+                case "Rectangle":
                     return new RectangleDTO();                    
-                case ElementType.Square:
+                case "Square":
                     return new SquareDTO();                    
-                case ElementType.Text:
+                case "Text":
                     return new TextDTO();                    
-                case ElementType.Triangle:
+                case "Triangle":
                     return new TriangleDTO();                    
-                case ElementType.Video:
+                case "Video":
                     return new VideoDTO();                    
-                case ElementType.Path:
-                case ElementType.Line:
+                case "Path":
+                case "Line":
                 default:
                     return null;                    
             }            
         }
+
+        //public ShapeDTO CreateElement(ElementType elementType)
+        //{
+        //    switch (elementType)
+        //    {
+        //        case ElementType.Audio:
+        //            return new AudioDTO();
+        //        case ElementType.Circle:
+        //            return new CircleDTO();
+        //        case ElementType.DVD:
+        //            return new DVDDTO();
+        //        case ElementType.Ellipse:
+        //            return new EllipseDTO();
+        //        case ElementType.Image:
+        //            return new ImageDTO();
+        //        case ElementType.LiveVideo:
+        //            return new LiveVideoDTO();
+        //        case ElementType.Polygon:
+        //            return new PolygonDTO();
+        //        case ElementType.Rectangle:
+        //            return new RectangleDTO();
+        //        case ElementType.Square:
+        //            return new SquareDTO();
+        //        case ElementType.Text:
+        //            return new TextDTO();
+        //        case ElementType.Triangle:
+        //            return new TriangleDTO();
+        //        case ElementType.Video:
+        //            return new VideoDTO();
+        //        case ElementType.Path:
+        //        case ElementType.Line:
+        //        default:
+        //            return null;
+        //    }
+        //}
 
         #endregion        
     }

@@ -1,4 +1,5 @@
-﻿using SmartPresenter.BO.Common.Interfaces;
+﻿using AutoMapper;
+using SmartPresenter.BO.Common.Interfaces;
 using SmartPresenter.Common;
 using SmartPresenter.Common.Extensions;
 using SmartPresenter.Common.Logger;
@@ -277,12 +278,18 @@ namespace SmartPresenter.BO.Common.Entities
         {
             Logger.LogEntry();
 
-            if(File.Exists(path) == false)
+            if (File.Exists(path) == false)
             {
                 throw new FileNotFoundException("Specified presentation is not found", path);
             }
-            Serializer<Presentation> serializer = new Serializer<Presentation>();
-            Presentation presentation = (Presentation)serializer.Load(path);
+            Serializer<PresentationDTO> serializer = new Serializer<PresentationDTO>();
+
+            PresentationDTO presentationDTO = (PresentationDTO)serializer.Load(path);
+
+            Mapper.CreateMap<SlideDTO, ISlide>();
+            Mapper.CreateMap<Presentation, PresentationDTO>();
+            Presentation presentation = new Presentation();
+            Mapper.Map<PresentationDTO, IPresentation>(presentationDTO, presentation);
 
             Logger.LogExit();
             return presentation;
@@ -306,8 +313,12 @@ namespace SmartPresenter.BO.Common.Entities
 
             if (IsDirty == true)
             {
-                Serializer<Presentation> serializer = new Serializer<Presentation>();
-                if (serializer.Save(this, path) == true)
+                Serializer<PresentationDTO> serializer = new Serializer<PresentationDTO>();
+                Mapper.CreateMap<ISlide, SlideDTO>();
+                Mapper.CreateMap<Presentation, PresentationDTO>();
+                PresentationDTO presentationDTO = new PresentationDTO();
+                Mapper.Map<IPresentation, PresentationDTO>(this, presentationDTO);
+                if (serializer.Save(presentationDTO, path) == true)
                 {
                     this.IsDirty = false;
                 }

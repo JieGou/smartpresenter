@@ -157,6 +157,12 @@ namespace SmartPresenter.BO.Common.UserAccounts.Factory
                 }
             }
 
+            /// <summary>
+            /// Gets the media thumbnails path.
+            /// </summary>
+            /// <value>
+            /// The media thumbnails path.
+            /// </value>
             public string MediaThumbnailsPath
             {
                 get
@@ -165,11 +171,28 @@ namespace SmartPresenter.BO.Common.UserAccounts.Factory
                 }
             }
 
+            /// <summary>
+            /// Gets the media libraries path.
+            /// </summary>
             public string MediaLibrariesFolderPath
             {
                 get
                 {
                     return _userAccountData.MediaLibrariesFolderPath;
+                }
+            }
+
+            /// <summary>
+            /// Gets the document libraries folder path.
+            /// </summary>
+            /// <value>
+            /// The document libraries folder path.
+            /// </value>
+            public string DocumentLibrariesFolderPath
+            {
+                get
+                {
+                    return _userAccountData.DocumentLibrariesFolderPath;
                 }
             }
 

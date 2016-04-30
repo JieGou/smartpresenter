@@ -49,6 +49,14 @@ namespace SmartPresenter.BO.Common.Interfaces
         string MediaLibrariesFolderPath { get; }
 
         /// <summary>
+        /// Gets the document libraries folder path.
+        /// </summary>
+        /// <value>
+        /// The document libraries folder path.
+        /// </value>
+        string DocumentLibrariesFolderPath { get; }
+
+        /// <summary>
         /// Gets the general settings.
         /// </summary>
         /// <value>

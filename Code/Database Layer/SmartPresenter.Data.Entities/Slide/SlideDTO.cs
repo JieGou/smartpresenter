@@ -25,6 +25,19 @@ namespace SmartPresenter.Data.Entities
         /// </summary>
         public SlideDTO()
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            Elements = new ObservableCollection<ShapeDTO>();
+            Id = Guid.NewGuid();
+            Notes = string.Empty;
+            Label = string.Empty;
+            HotKey = null;
+            IsEnabled = true;
+            Background = "CornflowerBlue";
+            TransitionType = "None";
         }
 
         #endregion

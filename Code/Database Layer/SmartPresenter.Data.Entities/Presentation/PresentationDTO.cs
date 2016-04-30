@@ -29,6 +29,7 @@ namespace SmartPresenter.Data.Entities
         /// </summary>
         public PresentationDTO()
         {
+            Initialize();
         }
 
         public PresentationDTO(Guid id)
@@ -147,6 +148,11 @@ namespace SmartPresenter.Data.Entities
         #endregion
 
         #region Methods
+
+        private void Initialize()
+        {
+            this.Slides = new ObservableCollection<SlideDTO>();
+        }
 
         #region IXmlSerializable Members
 

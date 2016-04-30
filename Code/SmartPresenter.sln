@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{940CF45B-7FE3-49DC-B53A-B8F40BC7A82D}"
 EndProject
@@ -176,6 +176,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Common.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Entities", "Database Layer\SmartPresenter.Data.Entities\SmartPresenter.Data.Entities.csproj", "{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPresenter.Data.Entities.Test", "Test\SmartPresenter.Data.Entities.Test\SmartPresenter.Data.Entities.Test.csproj", "{80907CC5-2E95-47B3-8C06-F1F0C500843E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -294,6 +296,10 @@ Global
 		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80907CC5-2E95-47B3-8C06-F1F0C500843E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80907CC5-2E95-47B3-8C06-F1F0C500843E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80907CC5-2E95-47B3-8C06-F1F0C500843E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80907CC5-2E95-47B3-8C06-F1F0C500843E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -340,5 +346,6 @@ Global
 		{6DADAE37-F2C5-4FF2-B7B7-BD86CCF856BC} = {913A43EB-C370-4689-8069-7F4C19763B71}
 		{2BE1EE09-70AE-4A0F-8A44-51630B17AC95} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
 		{8DB7131A-DEC2-4A03-8FC5-48058B4908B8} = {66B21F37-8CAE-4264-B774-60AB4801E90B}
+		{80907CC5-2E95-47B3-8C06-F1F0C500843E} = {D4567401-8A29-44E9-A82E-0910DEED13BE}
 	EndGlobalSection
 EndGlobal

@@ -72,16 +72,16 @@ namespace SmartPresenter.BO.Common.Entities
         /// </summary>
         public PresentationLibrary(string location, string name = "")
         {
+            Initialize();
             _location = location;
+            Name = name;
             if (Directory.Exists(_location) == false)
             {
                 Directory.CreateDirectory(_location);
             }
             _presentationUnitOfWork = new PresentationUnitOfWork(location);
-            Mapper.CreateMap<PresentationDTO, Presentation>();
-            Load(location, name);
-
-            Initialize();
+            
+            Load(location, name);            
         }
 
         #endregion
@@ -187,7 +187,11 @@ namespace SmartPresenter.BO.Common.Entities
         /// </summary>
         private void Initialize()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid();            
+
+            Mapper.CreateMap<SlideDTO, ISlide>().ReverseMap();
+            //Mapper.CreateMap<IList<SlideDTO>, IList<ISlide>>().ReverseMap();
+            Mapper.CreateMap<PresentationDTO, Presentation>().ReverseMap();
         }
 
         /// <summary>
@@ -258,19 +262,6 @@ namespace SmartPresenter.BO.Common.Entities
         /// </summary>
         public void Save()
         {
-            //Logger.LogEntry();
-
-            //foreach (Presentation document in Items)
-            //{
-            //    document.Save();
-            //}
-
-            //if (ApplicationSettings.Instance.ActiveUserAccount.ActiveProfile.GeneralSettings.PresentationLibraries.Contains(this) == false)
-            //{
-            //    ApplicationSettings.Instance.ActiveUserAccount.ActiveProfile.GeneralSettings.PresentationLibraries.Add(this);
-            //}
-
-            //Logger.LogExit();
             Logger.LogEntry();
 
             foreach (Presentation document in Items)
@@ -278,14 +269,24 @@ namespace SmartPresenter.BO.Common.Entities
                 document.Save();
             }
 
+            if (ApplicationSettings.Instance.ActiveUserAccount.ActiveProfile.GeneralSettings.PresentationLibraries.Contains(this) == false)
+            {
+                ApplicationSettings.Instance.ActiveUserAccount.ActiveProfile.GeneralSettings.PresentationLibraries.Add(this);
+            }
+
+            foreach (Presentation document in Items)
+            {
+                document.Save();
+            }
+
             Serializer<PresentationLibrary> serializer = new Serializer<PresentationLibrary>();
-            //string path = System.IO.Path.Combine(ApplicationSettings.Instance.DocumentLibrariesFolderPath, Name);
-            //if (Directory.Exists(path) == false)
-            //{
-            //    Directory.CreateDirectory(path);
-            //}
-            //path = System.IO.Path.Combine(path, Lib_File_Name);
-            //serializer.Save(this, path);
+            string path = System.IO.Path.Combine(ApplicationSettings.Instance.ActiveUserAccount.ActiveProfile.DocumentLibrariesFolderPath, Name);
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            path = System.IO.Path.Combine(path, Lib_File_Name);
+            serializer.Save(this, path);
 
             Logger.LogExit();
         }
@@ -363,15 +364,14 @@ namespace SmartPresenter.BO.Common.Entities
             {
                 throw new FileNotFoundException("Specified media library not found", name);
             }
-            PresentationLibrary library = new PresentationLibrary();
-            library.Location = location;
-            library.Name = name;            
-
+            Location = location;
+            Name = name;
+                    
             List<PresentationDTO> presentationDTOs = new List<PresentationDTO>();
             foreach (string file in Directory.GetFiles(location, string.Concat("*", Constants.Default_Document_Extension)))
             {
                 PresentationDTO presentationDTO = _presentationUnitOfWork.Repository.Get(presentation => presentation.Path.Equals(file)).FirstOrDefault();                
-                library.Items.Add(Mapper.Map<PresentationDTO, Presentation>(presentationDTO));
+                Items.Add(Mapper.Map<PresentationDTO, Presentation>(presentationDTO));
             }            
 
             Logger.LogExit();
@@ -425,7 +425,8 @@ namespace SmartPresenter.BO.Common.Entities
             writer.WriteStartElement("Presentations");
             foreach (Presentation presentation in Items)
             {
-                //presentation.WriteXml(writer);
+                PresentationDTO presentationDTO = Mapper.Map<Presentation, PresentationDTO>(presentation);
+                presentationDTO.WriteXml(writer);
             }
             writer.WriteEndElement();
 

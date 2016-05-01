@@ -9,11 +9,11 @@ namespace SmartPresenter.Data.Common.Repositories
     /// <summary>
     /// A unit of work done on any presentation.
     /// </summary>
-    public class PresentationUnitOfWork : IUnitOfWork<PresentationDTO>
+    public class PresentationUnitOfWork : IUnitOfWork<Presentation>
     {
         #region Private Data Members
 
-        private List<PresentationDTO> _safeCopy;
+        private List<Presentation> _safeCopy;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// <param name="location">The location.</param>
         public PresentationUnitOfWork(string location)
         {
-            _safeCopy = new List<PresentationDTO>();
+            _safeCopy = new List<Presentation>();
             Repository = new PresentationRepository(location);
 
             UpdateSafeCopy();
@@ -41,7 +41,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// <value>
         /// The repository.
         /// </value>
-        public IRepository<PresentationDTO> Repository { get; set; }
+        public IRepository<Presentation> Repository { get; set; }
 
         #endregion
 
@@ -55,9 +55,9 @@ namespace SmartPresenter.Data.Common.Repositories
         private void UpdateSafeCopy()
         {
             _safeCopy.Clear();
-            foreach (PresentationDTO presentation in Repository.GetAll())
+            foreach (Presentation presentation in Repository.GetAll())
             {
-                _safeCopy.Add((PresentationDTO)presentation.Clone());
+                _safeCopy.Add((Presentation)presentation.Clone());
             }
         }
 
@@ -75,7 +75,7 @@ namespace SmartPresenter.Data.Common.Repositories
         {
             bool hasCommitSuceeded = true;
 
-            foreach (PresentationDTO presentation in Repository.Get(p => p.IsDirty))
+            foreach (Presentation presentation in Repository.Get(p => p.IsDirty))
             {
                 try
                 {
@@ -107,7 +107,7 @@ namespace SmartPresenter.Data.Common.Repositories
             bool hasRollbackSuceeded = true;
 
             Repository.Clear();
-            foreach (PresentationDTO presentation in _safeCopy)
+            foreach (Presentation presentation in _safeCopy)
             {
                 try
                 {

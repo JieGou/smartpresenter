@@ -54,12 +54,6 @@
     <Compile Include="Slide\SlideDTOTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Database Layer\SmartPresenter.Data.Entities\SmartPresenter.Data.Entities.csproj">
-      <Project>{8db7131a-dec2-4a03-8fc5-48058b4908b8}</Project>
-      <Name>SmartPresenter.Data.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

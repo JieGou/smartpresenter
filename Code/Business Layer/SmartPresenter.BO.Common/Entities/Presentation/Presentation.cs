@@ -5,7 +5,6 @@ using SmartPresenter.Common.Extensions;
 using SmartPresenter.Common.Logger;
 using SmartPresenter.Data.Common;
 using SmartPresenter.Data.Common.Repositories;
-using SmartPresenter.Data.Entities;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -282,14 +281,9 @@ namespace SmartPresenter.BO.Common.Entities
             {
                 throw new FileNotFoundException("Specified presentation is not found", path);
             }
-            Serializer<PresentationDTO> serializer = new Serializer<PresentationDTO>();
+            Serializer<Presentation> serializer = new Serializer<Presentation>();
 
-            PresentationDTO presentationDTO = (PresentationDTO)serializer.Load(path);
-
-            Mapper.CreateMap<SlideDTO, ISlide>();
-            Mapper.CreateMap<Presentation, PresentationDTO>();
-            Presentation presentation = new Presentation();
-            Mapper.Map<PresentationDTO, IPresentation>(presentationDTO, presentation);
+            Presentation presentation = (Presentation)serializer.Load(path);
 
             Logger.LogExit();
             return presentation;
@@ -313,12 +307,9 @@ namespace SmartPresenter.BO.Common.Entities
 
             if (IsDirty == true)
             {
-                Serializer<PresentationDTO> serializer = new Serializer<PresentationDTO>();
-                Mapper.CreateMap<ISlide, SlideDTO>();
-                Mapper.CreateMap<Presentation, PresentationDTO>();
-                PresentationDTO presentationDTO = new PresentationDTO();
-                Mapper.Map<IPresentation, PresentationDTO>(this, presentationDTO);
-                if (serializer.Save(presentationDTO, path) == true)
+                Serializer<Presentation> serializer = new Serializer<Presentation>();
+                
+                if (serializer.Save(this, path) == true)
                 {
                     this.IsDirty = false;
                 }
@@ -415,23 +406,7 @@ namespace SmartPresenter.BO.Common.Entities
 
         #region Operators
 
-        public static implicit operator Presentation(PresentationDTO presentationDTO)
-        {
-            Presentation presentation = new Presentation()
-            {
-                Category = presentationDTO.Category,
-                Height = presentationDTO.Height,
-                Id = presentationDTO.Id,
-                IsDirty = presentationDTO.IsDirty,
-                Name = presentationDTO.Name,
-                ParentLibraryLocation = presentationDTO.ParentLibraryLocation,
-                Width = presentationDTO.Width,
-            };
-
-            //presentationDTO.Slides.ForEach(slide => presentation.AddSlide(slide));
-
-            return presentation;
-        }
+        
 
         #endregion
 

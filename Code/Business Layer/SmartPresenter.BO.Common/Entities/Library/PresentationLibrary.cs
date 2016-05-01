@@ -14,7 +14,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Schema;
-using SmartPresenter.Data.Entities;
 using AutoMapper;
 using System.Collections.Generic;
 
@@ -188,10 +187,6 @@ namespace SmartPresenter.BO.Common.Entities
         private void Initialize()
         {
             Id = Guid.NewGuid();            
-
-            Mapper.CreateMap<SlideDTO, ISlide>().ReverseMap();
-            //Mapper.CreateMap<IList<SlideDTO>, IList<ISlide>>().ReverseMap();
-            Mapper.CreateMap<PresentationDTO, Presentation>().ReverseMap();
         }
 
         /// <summary>
@@ -367,11 +362,10 @@ namespace SmartPresenter.BO.Common.Entities
             Location = location;
             Name = name;
                     
-            List<PresentationDTO> presentationDTOs = new List<PresentationDTO>();
             foreach (string file in Directory.GetFiles(location, string.Concat("*", Constants.Default_Document_Extension)))
             {
-                PresentationDTO presentationDTO = _presentationUnitOfWork.Repository.Get(presentation => presentation.Path.Equals(file)).FirstOrDefault();                
-                Items.Add(Mapper.Map<PresentationDTO, Presentation>(presentationDTO));
+                //PresentationDTO presentationDTO = _presentationUnitOfWork.Repository.Get(presentation => presentation.Path.Equals(file)).FirstOrDefault();                
+                Items.Add(null);
             }            
 
             Logger.LogExit();
@@ -425,8 +419,8 @@ namespace SmartPresenter.BO.Common.Entities
             writer.WriteStartElement("Presentations");
             foreach (Presentation presentation in Items)
             {
-                PresentationDTO presentationDTO = Mapper.Map<Presentation, PresentationDTO>(presentation);
-                presentationDTO.WriteXml(writer);
+                //PresentationDTO presentationDTO = Mapper.Map<Presentation, PresentationDTO>(presentation);
+                //presentationDTO.WriteXml(writer);
             }
             writer.WriteEndElement();
 

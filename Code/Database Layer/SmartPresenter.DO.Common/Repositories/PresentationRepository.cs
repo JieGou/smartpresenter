@@ -1,7 +1,6 @@
 ﻿using SmartPresenter.Common;
 using SmartPresenter.Common.Logger;
 using SmartPresenter.Data.Common.Interfaces;
-using SmartPresenter.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,14 +11,14 @@ namespace SmartPresenter.Data.Common.Repositories
     /// <summary>
     /// A Concrete Factory class to create Presentations.
     /// </summary>
-    public class PresentationRepository : IRepository<PresentationDTO>
+    public class PresentationRepository : IRepository<Presentation>
     {
         #region Private Data Members
 
         /// <summary>
         /// The list of presentations in store.
         /// </summary>
-        private List<PresentationDTO> _presentations = new List<PresentationDTO>();
+        private List<Presentation> _presentations = new List<Presentation>();
 
         #endregion
 
@@ -85,7 +84,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public bool Add(PresentationDTO entity)
+        public bool Add(Presentation entity)
         {
             try
             {
@@ -109,7 +108,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public bool Delete(PresentationDTO entity)
+        public bool Delete(Presentation entity)
         {
             try
             {
@@ -136,7 +135,7 @@ namespace SmartPresenter.Data.Common.Repositories
         {
             try
             {
-                PresentationDTO presentation = _presentations.FirstOrDefault(p => p.Id.Equals(id));
+                Presentation presentation = _presentations.FirstOrDefault(p => p.Id.Equals(id));
                 if (presentation != null)
                 {
                     _presentations.Remove(presentation);
@@ -158,7 +157,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// <param name="newValue">The new value.</param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool Update(PresentationDTO oldValue, PresentationDTO newValue)
+        public bool Update(Presentation oldValue, Presentation newValue)
         {
             if (newValue != null && _presentations.Contains(oldValue))
             {
@@ -173,16 +172,16 @@ namespace SmartPresenter.Data.Common.Repositories
         /// Gets all presentations from store.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<PresentationDTO> GetAll()
+        public IEnumerable<Presentation> GetAll()
         {
             try
             {
-                return _presentations.AsQueryable<PresentationDTO>();
+                return _presentations.AsQueryable<Presentation>();
             }
             catch (Exception ex)
             {
                 Logger.LogMsg.Error(ex.Message, ex);
-                return new List<PresentationDTO>().AsQueryable();
+                return new List<Presentation>().AsQueryable();
             }
         }
 
@@ -191,7 +190,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public PresentationDTO Get(Guid id)
+        public Presentation Get(Guid id)
         {
             try
             {
@@ -209,7 +208,7 @@ namespace SmartPresenter.Data.Common.Repositories
         /// </summary>
         /// <param name="queryString">The query string.</param>
         /// <returns></returns>
-        public IEnumerable<PresentationDTO> Get(Func<PresentationDTO, bool> queryString)
+        public IEnumerable<Presentation> Get(Func<Presentation, bool> queryString)
         {
             try
             {

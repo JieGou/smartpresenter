@@ -67,10 +67,6 @@
       <Project>{0e5ba9b0-55a6-4256-a318-4d6540fb67dd}</Project>
       <Name>SmartPresenter.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Database Layer\SmartPresenter.Data.Entities\SmartPresenter.Data.Entities.csproj">
-      <Project>{8db7131a-dec2-4a03-8fc5-48058b4908b8}</Project>
-      <Name>SmartPresenter.Data.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Database Layer\SmartPresenter.DO.Common\SmartPresenter.Data.Common.csproj">
       <Project>{7c7e403c-864e-4ccc-bc88-d30762a28d13}</Project>
       <Name>SmartPresenter.Data.Common</Name>
